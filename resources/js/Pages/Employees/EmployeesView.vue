@@ -1,15 +1,15 @@
 <template>
-    <Head title="Pacientes"/>
+    <Head title="Funcionários"/>
     <Content>
       <template #section>
-        <Section title="Lista de Pacientes" subtitle="Lar Estância">
+        <Section title="Lista de Funcionários" subtitle="Lar Estância">
         </Section>
       </template>
       <div class="row row-deck row-cards">
           <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Pacientes</h3>
+                  <h3 class="card-title">Funcionários</h3>
                 </div>
                 <div class="table-responsive">
                   <table class="table card-table table-vcenter text-nowrap datatable">
@@ -23,10 +23,7 @@
                         <th>Nome</th>
                         <th>Telefone</th>
                         <th>Email</th>
-                        <th>Idade</th>
-                        <th>Responsável</th>
-                        <th>Entrada</th>
-                        <th>Saída</th>
+                        <th>Status</th>
                         <th></th>
                       </tr>
                     </thead>
@@ -58,8 +55,8 @@
                           <IconChevronLeft  size="15"/> Anterior
                       </a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
                     <li class="page-item"><a class="page-link" href="#">3</a></li>
                     <li class="page-item"><a class="page-link" href="#">4</a></li>
                     <li class="page-item"><a class="page-link" href="#">5</a></li>

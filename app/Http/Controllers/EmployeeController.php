@@ -2,15 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Inertia\Inertia;
 use App\Models\Employee;
+use App\Models\Patient;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 use Illuminate\Http\RedirectResponse;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
+
+
+    public function index()
+    {
+        $userId = Auth::id();
+        return Inertia::render('Employees/EmployeesView', [
+            'patients' => Patient::where('user_id', $userId)->paginate()
+        ]);
+    }
 
     public function addEmployeeView()
     {

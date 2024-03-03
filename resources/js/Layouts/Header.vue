@@ -162,7 +162,7 @@
                         </span>
                       </a>
                       <div class="dropdown-menu">
-                        <Link :href="route('patients.index')" class="dropdown-item">
+                        <Link :href="route('employees.index')" class="dropdown-item">
                           <span class="nav-link-icon d-md-none d-lg-inline-block"><IconHeartRateMonitor /></span>
                           <span class="nav-link-title">Ver Funcionários</span>
                         </Link>

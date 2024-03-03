@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -33,18 +31,8 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('patients', [PatientController::class, 'index'])->name('patients.index');
     Route::get('patients/add', [PatientController::class, 'addPatientView'])->name('patients.add');
-    Route::post('patient', [PatientController::class, 'store'])->name('patients.create');
-
-
+    Route::get('employees', [EmployeeController::class, 'index'])->name('employees.index');
     Route::get('employees/add', [EmployeeController::class, 'addEmployeeView'])->name('employees.add');
-    Route::post('employees', [EmployeeController::class, 'store'])->name('employees.create');
-
-
-
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
 
 require __DIR__ . '/auth.php';
