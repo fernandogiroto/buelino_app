@@ -76,7 +76,7 @@
                 <div class="card">
                   <div class="empty">
                     <div class="empty-img">
-                        <img src="@/Assets/Img/avatar_old.png" height="128" alt="Buelino - Avatar Patient" v-if="form.gender === 'masculino'">
+                        <img src="@/Assets/Img/avatar_old.png" height="128" alt="Buelino - Avatar Patient" v-if="form.gender === 'Masculino'">
                         <img src="@/Assets/Img/avatar_old_woman.png" height="128" alt="Buelino - Avatar Patient" v-else>
                     </div>
                     <p class="empty-title" v-if="form.name">{{ form.name }} {{ form.surname }}</p>
@@ -144,7 +144,7 @@ const form = useForm({
   responsible: '',
   entry_date: '',
   leaving_date: '',
-  gender: 'masculino',
+  gender: 'Masculino',
   description:null
 });
 

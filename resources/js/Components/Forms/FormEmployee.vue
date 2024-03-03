@@ -13,6 +13,15 @@
                             <input type="text" class="form-control" name="email" placeholder="Email" v-model="form.email">
                         </div>
                     </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <select class="form-select" v-model="form.role">
+                                <option value="Enfermeiro(a)">Enfermeiro(a)</option>
+                                <option value="Médico">Médico</option>
+                                <option value="Gestor">Gestor</option>
+                              </select>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -20,10 +29,13 @@
                 <div class="card">
                   <div class="empty">
                     <div class="empty-img">
-                        <img src="@/Assets/Img/avatar_old.png" height="128" alt="Buelino - Avatar Patient">
+                        <img src="@/Assets/Img/nurse.jpg" height="128" alt="Buelino - Avatar Employee" v-if="form.role === 'Enfermeiro(a)'">
+                        <img src="@/Assets/Img/medic.png" height="128" alt="Buelino - Avatar Employee" v-if="form.role === 'Médico'">
+                        <img src="@/Assets/Img/manager.png" height="128" alt="Buelino - Avatar Employee" v-if="form.role === 'Gestor'">
                     </div>
                     <p class="empty-title" v-if="form.name">{{ form.name }}</p>
                     <p class="empty-title" v-else>Nome do Funcionário</p>
+                    <p class="empty-subtitle text-secondary">Cargo: {{ form.role }}</p>
                     <p class="empty-subtitle text-secondary" v-if="form.email"><IconMailOpened size="20"/> {{form.email}}</p>
                     <div class="empty-action">
                       <button type="submit" class="btn btn-primary">
@@ -74,7 +86,7 @@ import { IconMailOpened } from '@tabler/icons-vue';
 const form = useForm({
   name: null,
   email: null,
-  role:'employee',
+  role:'Enfermeiro(a)',
   avatar:'img/avatar.png',
   password:'12345678'
 });
