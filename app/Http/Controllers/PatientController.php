@@ -8,7 +8,7 @@ use App\Models\Patient;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
-use App\Models\User;
+use App\Models\Employee;
 use Inertia\Inertia;
 
 use Illuminate\Http\Request;
@@ -19,8 +19,10 @@ class PatientController extends Controller
     public function index()
     {
         $userId = Auth::id();
+        $clinic = Employee::where('user_id', $userId)->firstOrFail()->clinic;
+        $patients = $clinic->patients()->paginate();
         return Inertia::render('Patients/PatientsView', [
-            'patients' => Patient::where('user_id', $userId)->paginate()
+            'patients' => $patients
         ]);
     }
 

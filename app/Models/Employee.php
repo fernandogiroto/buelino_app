@@ -12,10 +12,17 @@ class Employee extends Authenticatable
 
     protected $fillable = [
         'user_id',
-        'name',
-        'email',
-        'avatar',
-        'role',
-        'password',
+        'clinic_id',
+        'role'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function clinic()
+    {
+        return $this->belongsTo(Clinic::class);
+    }
 }

@@ -21,24 +21,24 @@
                         </th>
                         <th></th>
                         <th>Nome</th>
-                        <th>Telefone</th>
                         <th>Email</th>
-                        <th>Status</th>
+                        <th>Telefone</th>
+                        <th>Cargo</th>
+                        <th>Entrada</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="patient in patients.data" :key="patient">
+                      <tr v-for="employee in employees.data" :key="employee">
                         <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
-                        <td><span class="text-secondary">{{ patient.id }}</span></td>
+                        <td><span class="text-secondary">{{ employee.id }}</span></td>
                         <td><img class="avatar avatar-sm" src="@/Assets/Img/perfil.png"></td>
-                        <td>{{ patient.name }}</td>
-                        <td>{{ patient.phone }}</td>
-                        <td>info@fernandogiroto.com</td>
-                        <td>33 anos</td>
-                        <td>{{ patient.responsible }}</td>
-                        <td>{{ patient.entry_date }}</td>
-                        <td>{{ patient.leaving_date }}</td>
+                        <td>{{ employee.user.name }}</td>
+                        <td>{{ employee.user.email }}</td>
+                        <td>{{ employee.user.phone }}</td>
+                        <td>{{ employee.role }}</td>
+                        <td>{{ formatDate(employee.user.created_at) }}</td>
+
                         <td class="text-end">
                             <IconTrash />
                             <IconEdit />
@@ -79,5 +79,9 @@ import Content from '@/Layouts/Content.vue';
 import { Head } from '@inertiajs/vue3';
 import { IconChevronLeft, IconChevronRight, IconChevronUp, IconEdit, IconTrash } from '@tabler/icons-vue';
 
-const props = defineProps({patients: null})
+const props = defineProps({employees: null})
+function formatDate(dateTime) {
+  const formattedDate = new Date(dateTime).toLocaleDateString();
+  return formattedDate;
+}
 </script>

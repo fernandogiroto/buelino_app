@@ -18,8 +18,10 @@ class EmployeeController extends Controller
     public function index()
     {
         $userId = Auth::id();
+        $clinic = Employee::where('user_id', $userId)->firstOrFail()->clinic;
+        $employees = $clinic->employees()->with('user')->paginate();
         return Inertia::render('Employees/EmployeesView', [
-            'patients' => Patient::where('user_id', $userId)->paginate()
+            'employees' => $employees
         ]);
     }
 

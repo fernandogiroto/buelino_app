@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\User;
+use App\Models\Clinic;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,6 +13,7 @@ class Patient extends Model
 
     protected $fillable = [
         'user_id',
+        'clinic_id',
         'name',
         'phone',
         'birthday',
@@ -26,8 +27,8 @@ class Patient extends Model
         'remember_token',
     ];
 
-    public function user()
+    public function clinic()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Clinic::class);
     }
 }

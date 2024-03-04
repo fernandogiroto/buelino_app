@@ -35,13 +35,13 @@
                         <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
                         <td><span class="text-secondary">{{ patient.id }}</span></td>
                         <td><img class="avatar avatar-sm" src="@/Assets/Img/perfil.png"></td>
-                        <td>{{ patient.name }}</td>
+                        <td>{{ patient.name }} {{ patient.surname }}</td>
                         <td>{{ patient.phone }}</td>
                         <td>info@fernandogiroto.com</td>
-                        <td>33 anos</td>
+                        <td>{{ calculateAge(patient.birthday) }} anos</td>
                         <td>{{ patient.responsible }}</td>
                         <td>{{ patient.entry_date }}</td>
-                        <td>{{ patient.leaving_date }}</td>
+                        <td>{{ patient.leaving_date ?? '-' }}</td>
                         <td class="text-end">
                             <IconTrash />
                             <IconEdit />
@@ -83,4 +83,15 @@ import { Head } from '@inertiajs/vue3';
 import { IconChevronLeft, IconChevronRight, IconChevronUp, IconEdit, IconTrash } from '@tabler/icons-vue';
 
 const props = defineProps({patients: null})
+
+function calculateAge(birthday) {
+        const today = new Date();
+        const birthDate = new Date(birthday);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const month = today.getMonth() - birthDate.getMonth();
+        if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
 </script>

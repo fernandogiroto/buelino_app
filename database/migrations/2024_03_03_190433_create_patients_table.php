@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('clinic_id')->constrained('clinics')->onDelete('cascade');
             $table->string('name');
-            $table->string('email');
+            $table->string('surname');
             $table->string('phone');
-            $table->date('birthday');
-            $table->string('responsible')->nullable();;
-            $table->date('entry_date');
+            $table->string('email')->nullable();
+            $table->date('birthday')->nullable();
+            $table->string('responsible')->nullable();
+            $table->string('avatar')->nullable();
+            $table->text('description')->nullable();
+            $table->date('entry_date')->nullable();
             $table->date('leaving_date')->nullable();
             $table->timestamps();
         });
