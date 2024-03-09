@@ -54,11 +54,10 @@ import Content from '@/Layouts/Content.vue';
 
 import { Head, usePage } from '@inertiajs/vue3';
 import { IconPlus } from '@tabler/icons-vue';
+
 import { computed } from 'vue';
 const page = usePage();
 const user = computed(() => page.props.auth.user);
-
-
 </script>
 
 <style lang="scss">

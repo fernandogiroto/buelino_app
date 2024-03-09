@@ -16,8 +16,6 @@
         @inertiaHead
     </head>
     <body>
-        <div class="page">
-            @inertia
-        </div>
+        @inertia
     </body>
 </html>

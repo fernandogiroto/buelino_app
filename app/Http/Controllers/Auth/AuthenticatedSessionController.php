@@ -13,6 +13,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Support\Facades\Log;
 use \Debugbar;
+use App\Models\User;
 
 
 
@@ -35,9 +36,10 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-
         $request->authenticate();
-
+        $user = Auth::user();
+        $user->status = true;
+        $user->save();
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
@@ -51,6 +53,10 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        $user = Auth::user();
+        $user->status = false;
+        $user->save();
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

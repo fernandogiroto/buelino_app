@@ -137,6 +137,10 @@
     }
 }
 
+#app {
+    height: 100%;
+}
+
 body {
     margin: 0;
     font-family: var(--tblr-body-font-family);

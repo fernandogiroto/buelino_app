@@ -2,22 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\User;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Medication extends Model
 {
     use HasFactory;
     protected $fillable = [
         'name',
-        'type',
-        'clinic_id',
+        'active_ingredients',
+        'purpose'
     ];
-
-    public function clinic()
-    {
-        return $this->belongsTo(Clinic::class);
-    }
 }

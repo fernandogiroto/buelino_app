@@ -1,7 +1,7 @@
 <template>
   <div class="card h-100">
     <div class="card-status-top bg-primary"></div>
-      <slot name="action" v-if="action">
+      <slot name="header" v-if="header">
         <div class="card-header justify-content-between">
           <h3 class="card-title">{{title}}</h3> 
           <a href="#" class="btn btn-outline-primary active">Adicionar Tarefa</a>
@@ -12,13 +12,13 @@
           <tbody v-for="task in tasks" :key="task">
             <tr>
             <td class="w-1 pe-0">
-              <input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task" :checked="task.complete">
+              <input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task" :checked="task.status">
             </td>
             <td class="w-100">
               <a href="#" class="text-reset">{{task.name}}</a>
             </td>
             <td class="text-nowrap text-secondary">
-                <IconCalendarMonth size="20" /> {{ task.date }}
+                <IconCalendarMonth size="20" /> {{ task.created_at }}
             </td>
             <td class="text-nowrap">
               <IconPencil size="20"/> <IconTrash  size="20"/>
@@ -37,18 +37,26 @@
           type: String,
           default: 'Tarefas'
         },
-        action :{
+        header :{
           type: Boolean,
           default: true
         }
     });
-  const tasks  = [
-    { name: 'Gestionar as roupas de cama', date: '04/Mar/2024' , complete: true },
-    { name: 'Gestionar as roupas de cama', date: '20/Fev/2024' , complete: false },
-    { name: 'Gestionar as roupas de cama', date: '02/Fev/2024' , complete: true },
-    { name: 'Gestionar as roupas de cama', date: '15/Jan/2024' , complete: true },
-    { name: 'Gestionar as roupas de cama', date: '10/Jan/2024' , complete: false }
-  ];
-  
-  
+
+
+import axios from 'axios';
+import { onMounted, ref } from 'vue';
+
+const tasks = ref(null)
+const getTasks = () => {
+    axios.get('/tasks')
+    .then( res => tasks.value  = res.data)
+    .catch(error => console.log(error))
+}
+
+onMounted(()=> {
+  getTasks();
+})
+
+
 </script>

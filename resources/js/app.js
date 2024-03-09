@@ -21,8 +21,6 @@ createInertiaApp({
             .use(ZiggyVue)
             .mount(el);
 
-        app.config.globalProperties.$filters = filters;
-
         return app;
     },
     progress: {

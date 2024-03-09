@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PatientController;
 use App\Http\Controllers\EmployeeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +19,14 @@ use App\Http\Controllers\EmployeeController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/employees', [EmployeeController::class, 'employees']);
+
 
 
 Route::middleware('auth')->group(function () {
-    Route::post('patient', [PatientController::class, 'store'])->name('patients.create');
-    Route::post('employees', [EmployeeController::class, 'store'])->name('employees.create');
+
+
+    // Route::get('employees', [EmployeeController::class, 'employees'])->name('api.employees');;
+    // Route::post('patient', [PatientController::class, 'store'])->name('patients.create');
+    // Route::post('employees', [EmployeeController::class, 'store'])->name('employees.create');
 });

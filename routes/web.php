@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\MedicationController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ActivityController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,8 +20,9 @@ use Inertia\Inertia;
 |
 */
 
+
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Auth/Login', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
     ]);
@@ -28,11 +32,20 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+
 Route::middleware('auth')->group(function () {
+    // PASS TO API
+    Route::get('/active_employees/{perPage}', [EmployeeController::class, 'employees']);
+    Route::get('/tasks', [TaskController::class, 'tasks']);
+    Route::get('/activities/list', [ActivityController::class, 'activities']);
+
     Route::get('patients', [PatientController::class, 'index'])->name('patients.index');
     Route::get('patients/add', [PatientController::class, 'addPatientView'])->name('patients.add');
     Route::get('employees', [EmployeeController::class, 'index'])->name('employees.index');
     Route::get('employees/add', [EmployeeController::class, 'addEmployeeView'])->name('employees.add');
+    Route::get('medications', [MedicationController::class, 'index'])->name('medications.index');
+    Route::get('activities', [ActivityController::class, 'index'])->name('activities.index');
 });
 
 require __DIR__ . '/auth.php';

@@ -1,7 +1,8 @@
 <template>
-  <div class="sticky-top">
+  <OffcanvasTasks></OffcanvasTasks>
+  <div :class="{'sticky-top': page.url !='/activities'}">
      <!-- TOPBAR -->
-    <header class="navbar navbar-expand-md sticky-top d-print-none">
+    <header class="navbar navbar-expand-md d-print-none">
       <div class="container-xl">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -11,6 +12,13 @@
           </Link>
          
         <div class="navbar-nav flex-row order-md-last">
+          <div class="nav-item d-none d-md-flex me-3">
+            <div class="btn-list">
+              <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasTask" role="button" aria-controls="offcanvasTask">
+                <IconListCheck size="16" /> <span class="ms-1">Tarefas</span>
+                </a>
+            </div>
+          </div>
           <div class="d-none d-md-flex">
             <div class="nav-item dropdown d-none d-md-flex me-3">
               <a href="#" class="nav-link px-0" data-bs-toggle="dropdown" tabindex="-1" aria-label="Show notifications">
@@ -116,7 +124,7 @@
       </div>
     </header>
      <!-- NAVBAR -->
-    <header class="navbar-expand-md">
+    <header class="navbar-expand-md ">
       <div class="collapse navbar-collapse" id="navbar-menu">
         <div class="navbar">
           <div class="container-xl">
@@ -124,8 +132,8 @@
               <div class="col">
                 <ul class="navbar-nav">
                   <!-- HOME -->
-                  <li class="nav-item" :class="{ 'active': $page.url === '/dashboard' }">
-                    <Link :href="route('dashboard')" class="nav-link">
+                  <li class="nav-item" >
+                    <Link :href="route('dashboard')" class="nav-link" :class="{ 'active': $page.url === '/dashboard' }">
                       <span class="nav-link-icon d-md-none d-lg-inline-block"><IconHome /></span>
                       <span class="nav-link-title">Início</span>
                     </Link>
@@ -152,8 +160,8 @@
                       </div>
                   </li>
                   <!-- EMPLOYEES -->
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#navbar-employees" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                  <li class="nav-item dropdown" >
+                      <a class="nav-link dropdown-toggle"   href="#navbar-employees" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                           <IconFirstAidKit />
                         </span>
@@ -184,7 +192,7 @@
                         </span>
                       </a>
                       <div class="dropdown-menu">
-                        <Link :href="route('patients.index')" class="dropdown-item">
+                        <Link :href="route('activities.index')" class="dropdown-item">
                           <span class="nav-link-icon d-md-none d-lg-inline-block"><IconFileSearch/></span>
                           <span class="nav-link-title">Ver Atividades</span>
                         </Link>
@@ -195,10 +203,16 @@
                       </div>
                   </li>
                   <!-- REPORTS -->
-                  <li class="nav-item" :class="{ 'active': $page.url === '/dashboard' }">
+                  <li class="nav-item" :class="{ 'active': $page.url === '/report' }">
                     <Link :href="route('dashboard')" class="nav-link">
                       <span class="nav-link-icon d-md-none d-lg-inline-block"><IconReportAnalytics /></span>
                       <span class="nav-link-title">Relatórios</span>
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                    <Link :href="route('medications.index')" class="nav-link" :class="{ 'active': $page.url === '/medications' }">
+                      <span class="nav-link-icon d-md-none d-lg-inline-block"><IconPill /></span>
+                      <span class="nav-link-title">Medicamentos</span>
                     </Link>
                   </li>
                 </ul>
@@ -224,22 +238,40 @@
 </template>
 
 <script setup>
+import OffcanvasTasks from '@/Components/Offcanvas/OffcanvasTasks.vue';
 import { Link, usePage } from '@inertiajs/vue3';
 import {
-IconFileDescription,
-IconFilePlus,
-IconFileSearch,
-IconFirstAidKit,
-IconHeartRateMonitor,
-IconHome,
-IconNurse,
-IconReportAnalytics,
-IconUserHeart,
-IconUsers,
-IconUsersPlus
+  IconFileDescription,
+  IconFilePlus,
+  IconFileSearch,
+  IconFirstAidKit,
+  IconHeartRateMonitor,
+  IconHome,
+  IconListCheck,
+  IconNurse,
+  IconPill,
+  IconReportAnalytics,
+  IconUserHeart,
+  IconUsers,
+  IconUsersPlus
 } from '@tabler/icons-vue';
 import { computed } from 'vue';
-
 const page = usePage();
 const user = computed(() => page.props.auth.user);
 </script>
+
+<style>
+
+
+
+a.nav-link.active::after{
+  content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.60rem;
+    border: 0 var(--tblr-border-style) var(--tblr-navbar-active-border-color);
+    border-bottom-width: 2px;
+}
+
+</style>

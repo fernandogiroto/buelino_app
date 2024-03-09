@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\User;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,7 @@ use Inertia\Inertia;
 use Illuminate\Http\RedirectResponse;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Hash;
+
 
 class EmployeeController extends Controller
 {
@@ -19,10 +21,23 @@ class EmployeeController extends Controller
     {
         $userId = Auth::id();
         $clinic = Employee::where('user_id', $userId)->firstOrFail()->clinic;
-        $employees = $clinic->employees()->with('user')->paginate();
+        $employees = $clinic->employees()->with('user')->paginate(5);
         return Inertia::render('Employees/EmployeesView', [
             'employees' => $employees
         ]);
+    }
+
+    public function employees($perPage)
+    {
+        $userId = Auth::id();
+        $clinic = Employee::where('user_id', $userId)->firstOrFail()->clinic;
+
+        $employeesQuery = $clinic->employees()->whereHas('user', function ($query) {
+            $query->where('status', 1);
+        })->with('user');
+
+        $employees = $employeesQuery->take($perPage)->get();
+        return response()->json($employees);
     }
 
     public function addEmployeeView()

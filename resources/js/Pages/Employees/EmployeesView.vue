@@ -38,10 +38,25 @@
                         <td>{{ employee.user.phone }}</td>
                         <td>{{ employee.role }}</td>
                         <td>{{ formatDate(employee.user.created_at) }}</td>
-
                         <td class="text-end">
-                            <IconTrash />
-                            <IconEdit />
+                            <div class="btn-list flex-nowrap">
+                              <a href="#" class="btn">
+                                Editar
+                              </a>
+                              <div class="dropdown">
+                                <button class="btn dropdown-toggle align-text-top" data-bs-toggle="dropdown">
+                                  Ações
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                  <a class="dropdown-item" href="#">
+                                    Deslogar
+                                  </a>
+                                  <a class="dropdown-item" href="#">
+                                    Excluir
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
                         </td>
                       </tr>
                     </tbody>
@@ -77,7 +92,7 @@
 import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
 import { Head } from '@inertiajs/vue3';
-import { IconChevronLeft, IconChevronRight, IconChevronUp, IconEdit, IconTrash } from '@tabler/icons-vue';
+import { IconChevronLeft, IconChevronRight, IconChevronUp } from '@tabler/icons-vue';
 
 const props = defineProps({employees: null})
 function formatDate(dateTime) {
