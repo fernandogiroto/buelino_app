@@ -11,17 +11,17 @@
                 <div class="card-header justify-content-between">
                   <h3 class="card-title">Pacientes</h3>
                   <div class="col-2 d-none d-xxl-block">
-                                <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
-                                    <form action="./" method="get" autocomplete="off" novalidate="">
-                                        <div class="input-icon">
-                                            <span class="input-icon-addon">
-                                                <IconSearch size="18" />
-                                            </span>
-                                            <input type="text" class="form-control" placeholder="Pesquisar Paciente" aria-label="Pesquisar Paciente">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                      <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
+                          <form action="./" method="get" autocomplete="off" novalidate="">
+                              <div class="input-icon">
+                                  <span class="input-icon-addon">
+                                      <IconSearch size="18" />
+                                  </span>
+                                  <input type="text" class="form-control" placeholder="Pesquisar Paciente" aria-label="Pesquisar Paciente">
+                              </div>
+                          </form>
+                      </div>
+                  </div>
                 </div>
                 <div class="table-responsive">
                   <table class="table card-table table-vcenter text-nowrap datatable">
@@ -92,7 +92,7 @@
 import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
 import { Head } from '@inertiajs/vue3';
-import { IconChevronLeft, IconChevronRight, IconChevronUp, IconEdit, IconTrash, IconSearch } from '@tabler/icons-vue';
+import { IconChevronLeft, IconChevronRight, IconChevronUp, IconEdit, IconSearch, IconTrash } from '@tabler/icons-vue';
 
 const props = defineProps({patients: null})
 

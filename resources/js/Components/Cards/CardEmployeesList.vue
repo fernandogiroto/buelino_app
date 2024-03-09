@@ -5,7 +5,7 @@
         </div>
         <div class="card-body">
             <div class="row g-3">
-                <div class="col-6" v-for="employee in employees" :key="employee.id">
+                <div class="col-12" v-for="employee in employees" :key="employee.id">
                     <div class="row g-3 align-items-center">
                         <a href="#" class="col-auto">
                             <span class="avatar" :style="`background-image: url('https://i.pravatar.cc/150?img=${employee.id}')`">
@@ -35,7 +35,7 @@ const props =  defineProps({
 
 const employees = ref(null)
 const getEmployees = () => {
-    axios.get('/active_employees/6')
+    axios.get('/active_employees/3')
     .then( res => employees.value  = res.data)
     .catch(error => console.log(error))
 }

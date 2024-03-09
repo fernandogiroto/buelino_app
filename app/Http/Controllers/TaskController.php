@@ -10,7 +10,7 @@ class TaskController extends Controller
 {
     public function tasks()
     {
-        $clinicId =  Auth::id();
+        $clinicId = Auth::user()->employee->clinic_id;
         $tasks = Task::where('clinic_id', $clinicId)->get();
         return response()->json($tasks);
     }

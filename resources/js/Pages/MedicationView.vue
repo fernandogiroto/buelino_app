@@ -49,7 +49,6 @@
                                     <td><IconZoomIn size="18"/> {{ truncateString(medication.active_ingredients) }}</td>
                                     <td><IconZoomIn size="18"/> {{ truncateString(medication.purpose) }}</td>
                                     <td class="text-end">
-                                        <IconTrash />
                                         <IconEdit />
                                     </td>
                                 </tr>
@@ -87,7 +86,7 @@ import Section from '@/Components/Common/Section.vue';
 import OffcanvasMedications from '@/Components/Offcanvas/OffcanvasMedications.vue';
 import Content from '@/Layouts/Content.vue';
 import { Head } from '@inertiajs/vue3';
-import { IconChevronLeft, IconChevronRight, IconChevronUp, IconEdit, IconSearch, IconTrash, IconZoomIn } from '@tabler/icons-vue';
+import { IconChevronLeft, IconChevronRight, IconChevronUp, IconEdit, IconSearch, IconZoomIn } from '@tabler/icons-vue';
 
     const props = defineProps({medications: null})
 

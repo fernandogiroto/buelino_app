@@ -39,23 +39,22 @@
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="form-label">Data de Nascimento</label>
-                            <div class="input-icon mb-2">
-                              <input class="form-control " placeholder="Select a date" id="datepicker-icon" value="2020-06-20">
-                              <span class="input-icon-addon">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path><path d="M16 3v4"></path><path d="M8 3v4"></path><path d="M4 11h16"></path><path d="M11 15h1"></path><path d="M12 15v3"></path></svg>
-                              </span>
-                            </div>
+                            <VueDatePicker 
+                                :day-names="['D', 'S', 'T', 'Q', 'Q', 'S', 'S']" 
+                                :enable-time-picker="false"
+                                locale="pt"
+                                v-model="form.birthday"
+                                >
+                                <template #action-buttons>
+                                </template>
+                            </VueDatePicker>
                         </div>
-                    </div>
+                    </div>  
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="form-label">Data de Entrada</label>
-                            <div class="input-icon mb-2">
-                              <input class="form-control " placeholder="Select a date" id="datepicker-icon" value="2020-06-20">
-                              <span class="input-icon-addon">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path><path d="M16 3v4"></path><path d="M8 3v4"></path><path d="M4 11h16"></path><path d="M11 15h1"></path><path d="M12 15v3"></path></svg>
-                              </span>
-                            </div>
+                            <VueDatePicker>
+                            </VueDatePicker>
                         </div>
                     </div>
                     <div class="col-4">
@@ -90,71 +89,54 @@
                       {{ form.description ?? 'Adicione as observações ou breve descrição do paciente.'}}
                     </p>
                     <div class="empty-action">
-                      <a href="./." class="btn btn-primary">
-                        Crir Paciente
-                      </a>
+                        <button type="submit" class="btn btn-primary">
+                            Crir Paciente
+                        </button>
                     </div>
                   </div>
                 </div>
             </div>
         </div>
-
-        <!-- <div>
-            <label for="name">Nome:</label>
-            <input type="text" id="name" v-model="form.name" required>
-        </div>
-        <div>
-            <label for="phone">Telefone:</label>
-            <input type="text" id="phone" v-model="form.phone" required>
-         </div>
-        <div>
-            <label for="birthday">Data de Nascimento:</label>
-            <input type="date" id="birthday" v-model="form.birthday" required>
-        </div>
-        <div>
-            <label for="responsable">Responsável:</label>
-            <input type="text" id="responsible" v-model="form.responsible" required>
-        </div>
-        <div>
-            <label for="entry_date">Data de Entrada:</label>
-            <input type="date" id="entry_date" v-model="form.entry_date" required>
-        </div>
-        <div>
-            <label for="leaving_date">Data de Saída:</label>
-            <input type="date" id="leaving_date" v-model="form.leaving_date">
-        </div>
-        <button type="submit">Criar Paciente</button> -->
     </form>
 </template>
 
-
 <script setup>
 import { useForm } from '@inertiajs/vue3';
-
 import { IconMailOpened, IconPhone, IconUserHeart } from '@tabler/icons-vue';
-
-
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 const form = useForm({
   name: null,
   surname:'',
   phone: null,
   email: null,
-  birthday: '',
+  birthday: '1979-01-21',
   responsible: '',
-  entry_date: '',
+  entry_date: '2022-05-01',
   leaving_date: '',
   gender: 'Masculino',
-  description:null
+  description:null,
+  avatar:'avatar.png'
 });
-
 
 const submit = () => {
     form.post(route("patients.create"), {
         onSuccess: (response) =>{
-            console.log('criado')
+            form.reset();
+            toast("Paciente Criado", {
+                "type": "success",
+                "transition": "flip",
+                "dangerouslyHTMLString": true
+                });
         },onError:(response)=>{
-            
+            toast("Paciente não criado", {
+                "type": "error",
+                "transition": "flip",
+                "dangerouslyHTMLString": true
+            })
         }
         
     });

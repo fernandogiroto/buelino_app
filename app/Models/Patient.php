@@ -12,14 +12,17 @@ class Patient extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'clinic_id',
         'name',
+        'surname',
         'phone',
+        'email',
         'birthday',
         'responsible',
         'entry_date',
         'leaving_date',
+        'avatar',
+        'description'
     ];
 
     protected $hidden = [

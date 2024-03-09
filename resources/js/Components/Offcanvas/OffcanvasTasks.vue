@@ -1,7 +1,7 @@
 <template>
     <div class="offcanvas offcanvas-end bg-white" tabindex="-1" id="offcanvasTask" aria-labelledby="offcanvasEndLabel" aria-modal="true" role="dialog">
         <div class="offcanvas-header">
-            <h2 class="offcanvas-title" id="offcanvasEndLabel">Tarefas</h2>
+            <h2 class="offcanvas-title" id="offcanvasEndLabel">Notas</h2>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">

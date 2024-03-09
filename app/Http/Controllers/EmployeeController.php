@@ -33,7 +33,7 @@ class EmployeeController extends Controller
         $clinic = Employee::where('user_id', $userId)->firstOrFail()->clinic;
 
         $employeesQuery = $clinic->employees()->whereHas('user', function ($query) {
-            $query->where('status', 1);
+            $query->where('status', 0);
         })->with('user');
 
         $employees = $employeesQuery->take($perPage)->get();
@@ -45,20 +45,36 @@ class EmployeeController extends Controller
         return Inertia::render('Employees/EmployeesAddView');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
+        try {
+            $clinicId = Auth::user()->employee->clinic_id;
 
-        Employee::create([
-            'user_id' => auth()->id(),
-            'name' => $request->name,
-            'email' => $request->email,
-            'avatar' => $request->avatar,
-            'role' =>  $request->role,
-            'password' => Hash::make($request->password),
-        ]);
-        return redirect(RouteServiceProvider::HOME);
+            try {
+                $user = User::create([
+                    'name' => $request->name,
+                    'password' => Hash::make($request->password),
+                    'email' => $request->email,
+                    'phone' => $request->phone,
+                    'avatar' => $request->avatar,
+                    'gender' => $request->gender,
+                ]);
+            } catch (ValidationException $e) {
+                return back()->withErrors($e->validator)->withInput();
+            }
+
+            Employee::create([
+                'user_id' => $user->id,
+                'clinic_id' => $clinicId,
+                'role' => $request->role
+            ]);
+            return redirect()->back()->with('success', 'Paciente criado com sucesso');
+        } catch (ValidationException $e) {
+            return back()->withErrors($e->validator)->withInput();
+        }
     }
 }

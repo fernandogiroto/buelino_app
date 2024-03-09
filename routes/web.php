@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/active_employees/{perPage}', [EmployeeController::class, 'employees']);
     Route::get('/tasks', [TaskController::class, 'tasks']);
     Route::get('/activities/list', [ActivityController::class, 'activities']);
+    Route::post('patient', [PatientController::class, 'store'])->name('patients.create');
+    Route::post('employees', [EmployeeController::class, 'store'])->name('employees.create');
 
     Route::get('patients', [PatientController::class, 'index'])->name('patients.index');
     Route::get('patients/add', [PatientController::class, 'addPatientView'])->name('patients.add');

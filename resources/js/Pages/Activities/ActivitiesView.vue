@@ -83,7 +83,13 @@
                 </thead>
                 <tbody>
                   <tr v-for="activity in activities" :key="activity">
-                    <td>{{activity.service.name}}</td>
+                    <td>
+                      <IconPill size="18" v-if="activity.service.name === 'Giving Medicine'"/>
+                      <IconPhysotherapist size="18" v-if="activity.service.name === 'Physiotherapy'"/>
+                      <IconSunHigh size="18" v-if="activity.service.name === 'Leisure'"/>
+                      <IconApple size="18" v-if="activity.service.name === 'Lunch'"/>
+                      {{activity.service.name}}
+                    </td>
                     <td><a href="#" class="text-reset" tabindex="-1">{{ activity.employee.user.name }}</a></td>
                     <td><a href="#" class="d-flex align-items-center text-reset" tabindex="-1"><img class="avatar avatar-sm me-2" src="@/Assets/Img/perfil.png"><span>{{ activity.patient.name }} {{ activity.patient.surname }}</span></a></td>
                     <td>05/03/2024</td>
@@ -130,7 +136,7 @@
 import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
 import { Head } from '@inertiajs/vue3';
-import { IconEdit, IconTrash } from '@tabler/icons-vue';
+import { IconApple, IconEdit, IconPhysotherapist, IconPill, IconSunHigh, IconTrash } from '@tabler/icons-vue';
 const props = defineProps({activities: null})
 
 

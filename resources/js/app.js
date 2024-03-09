@@ -6,8 +6,9 @@ import './bootstrap';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
+import 'vue3-toastify/dist/index.css';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
-import * as filters from './Plugins/filters.js';
+
 
 
 const appName = import.meta.env.VITE_APP_NAME || 'Buelino';

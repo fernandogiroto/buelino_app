@@ -1,13 +1,11 @@
 <template>
-  <div class="card h-100">
+  <div class="card" style="height: 18rem">
     <div class="card-status-top bg-primary"></div>
-      <slot name="header" v-if="header">
-        <div class="card-header justify-content-between">
-          <h3 class="card-title">{{title}}</h3> 
-          <a href="#" class="btn btn-outline-primary active">Adicionar Tarefa</a>
-        </div>
-      </slot> 
-      <div class="table-responsive">
+      <div class="card-header justify-content-between">
+          <h3 class="card-title">Notas</h3>
+          <a href="#" class="btn btn-primary">Adicionar Nota</a>
+      </div>
+      <div class="card-body card-body-scrollable card-body-scrollable-shadow p-0">
         <table class="table card-table table-vcenter">
           <tbody v-for="task in tasks" :key="task">
             <tr>
@@ -35,7 +33,7 @@
   const props =  defineProps({
         title: {
           type: String,
-          default: 'Tarefas'
+          default: 'Notas'
         },
         header :{
           type: Boolean,
