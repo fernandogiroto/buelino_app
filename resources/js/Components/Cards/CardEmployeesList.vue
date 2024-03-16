@@ -1,9 +1,9 @@
 <template>
-    <div class="card h-100">
+    <div class="card" style="height: 16rem;">
         <div class="card-header">
         <h3 class="card-title">{{ title }}</h3>
         </div>
-        <div class="card-body">
+        <div class="card-body card-body-scrollable card-body-scrollable-shadow">
             <div class="row g-3">
                 <div class="col-12" v-for="employee in employees" :key="employee.id">
                     <div class="row g-3 align-items-center">
@@ -29,13 +29,13 @@ import { onMounted, ref } from 'vue';
 const props =  defineProps({
     title: {
         type: String,
-        default: 'Funcionários Ativos'
+        default: 'Funcionários'
     }
 });
 
 const employees = ref(null)
 const getEmployees = () => {
-    axios.get('/active_employees/3')
+    axios.get('/active_employees/5')
     .then( res => employees.value  = res.data)
     .catch(error => console.log(error))
 }

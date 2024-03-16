@@ -107,8 +107,4 @@ import { Head } from '@inertiajs/vue3';
 import { IconChevronLeft, IconChevronRight, IconChevronUp, IconSearch } from '@tabler/icons-vue';
 
 const props = defineProps({employees: null})
-function formatDate(dateTime) {
-  const formattedDate = new Date(dateTime).toLocaleDateString();
-  return formattedDate;
-}
 </script>

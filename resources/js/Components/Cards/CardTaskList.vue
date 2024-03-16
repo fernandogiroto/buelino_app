@@ -16,7 +16,7 @@
               <a href="#" class="text-reset">{{task.name}}</a>
             </td>
             <td class="text-nowrap text-secondary">
-                <IconCalendarMonth size="20" /> {{ task.created_at }}
+                <IconCalendarMonth size="20" /> {{formatDate(task.created_at,'/',includeYear=false)}} - {{formatTime(task.created_at)}}
             </td>
             <td class="text-nowrap">
               <IconPencil size="20"/> <IconTrash  size="20"/>

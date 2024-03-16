@@ -9,7 +9,9 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Models\Employee;
+use App\Models\Activity;
 use Inertia\Inertia;
 
 use Illuminate\Http\Request;
@@ -25,6 +27,26 @@ class PatientController extends Controller
         return Inertia::render('Patients/PatientsView', [
             'patients' => $patients
         ]);
+    }
+
+    public function patient($id)
+    {
+
+        try {
+            $patient = 1;
+            $userId = Auth::id();
+            $clinic = Employee::where('user_id', $userId)->firstOrFail()->clinic;
+            $patient = Patient::where('id', $id)
+                ->where('clinic_id', $clinic->id)
+                ->firstOrFail();
+            $activities = Activity::where('clinic_id', $clinic->id)
+                ->where('patient_id', $patient->id)
+                ->with('service', 'patient', 'employee.user')
+                ->get();
+            return Inertia::render('Patients/PatientView', ['patient' => $patient, 'activities' => $activities]);
+        } catch (ModelNotFoundException $e) {
+            return Inertia::render('404');
+        }
     }
 
     public function addPatientView()

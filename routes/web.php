@@ -3,6 +3,7 @@
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MedicationController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ActivityController;
 use Illuminate\Foundation\Application;
@@ -39,9 +40,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/active_employees/{perPage}', [EmployeeController::class, 'employees']);
     Route::get('/tasks', [TaskController::class, 'tasks']);
     Route::get('/activities/list', [ActivityController::class, 'activities']);
+    Route::get('patient/{id}', [PatientController::class, 'patient'])->name('patients.patient');
     Route::post('patient', [PatientController::class, 'store'])->name('patients.create');
     Route::post('employees', [EmployeeController::class, 'store'])->name('employees.create');
 
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('patients', [PatientController::class, 'index'])->name('patients.index');
     Route::get('patients/add', [PatientController::class, 'addPatientView'])->name('patients.add');
     Route::get('employees', [EmployeeController::class, 'index'])->name('employees.index');

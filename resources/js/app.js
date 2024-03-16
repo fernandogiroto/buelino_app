@@ -8,10 +8,12 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
 import 'vue3-toastify/dist/index.css';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
-
+import filters from './Plugins/filters.js';
 
 
 const appName = import.meta.env.VITE_APP_NAME || 'Buelino';
+
+
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -19,8 +21,14 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         const app = createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(ZiggyVue)
-            .mount(el);
+            .use(ZiggyVue);
+
+        // app.config.globalProperties.$filters = filters;
+
+        Object.keys(filters).forEach(key => {
+            app.config.globalProperties[key] = filters[key];
+        });
+        app.mount(el);
 
         return app;
     },
