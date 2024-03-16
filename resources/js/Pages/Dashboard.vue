@@ -28,7 +28,6 @@
                 </CardBanner>
             </div>
             <div class="col-3">
-                <Calendar />
 
             </div>
             <!-- EMPLOYEES LIST -->
@@ -92,12 +91,8 @@ import CardShortcut from '@/Components/Cards/CardShortcut.vue';
 import CardTaskList from '@/Components/Cards/CardTaskList.vue';
 import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
-
-
 import { Head, usePage } from '@inertiajs/vue3';
 import { IconPlus, IconReport, IconToolsKitchen2, IconUsers, IconWashDryDip } from '@tabler/icons-vue';
-import { Calendar } from 'v-calendar';
-import 'v-calendar/style.css';
 
 import { computed } from 'vue';
 const page = usePage();
