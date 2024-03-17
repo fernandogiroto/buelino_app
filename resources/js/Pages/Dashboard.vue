@@ -2,7 +2,7 @@
     <Head title="Dashboard"/>
     <Content>
          <!-- SECTION INTRO -->
-        <template #section>
+        <template #section class="">
             <Section title="Dashboard" subtitle="Lar Estância">
                 <template #buttons>
                     <a href="#" class="btn btn-primary d-none d-sm-inline-block">
@@ -14,7 +14,7 @@
         </template>
         <div class="row row-cards">
              <!-- BANNER -->
-            <div class="col-lg-6 d-none d-lg-block">
+            <div class="col-md-6 d-none d-lg-block">
                 <CardBanner>
                     <template #title>
                         Olá {{ user.name }}
@@ -27,14 +27,23 @@
                     </template>
                 </CardBanner>
             </div>
-            <div class="col-3">
+            <div class="col-3 d-none d-lg-block">
 
             </div>
             <!-- EMPLOYEES LIST -->
-            <div class="col-3">
+            <div class="col-12 col-md-4 mb-2 mb-md-0 d-none d-lg-block">
                 <CardEmployeesList></CardEmployeesList>
             </div>
             <!-- SHORTCUT CARDS -->
+            <div class="col-sm-6 col-lg-3">
+                <CardShortcut url="dashboard" title="Registrar Atividade" subtitle="Passagem de turno">
+                    <div class="col-auto">
+                            <span class="bg-primary text-white avatar">
+                                <IconReport />
+                            </span>
+                        </div>
+                </CardShortcut>
+            </div>
             <div class="col-sm-6 col-lg-3">
                 <CardShortcut url="dashboard" title="Relatório Diário" subtitle="Passagem de turno">
                     <div class="col-auto">
@@ -72,12 +81,11 @@
                 </CardShortcut>
             </div>
             <!-- LAST ACTIVITIES -->
-            <div class="col-6">
+            <div class="col-12 col-md-6 mt-3 mb-md-0">
                 <CardActivitiesList></CardActivitiesList>
             </div>
             <!-- TASK LIST -->
             <div class="col-6">
-                <CardTaskList></CardTaskList>
             </div>
         </div>
     </Content>
@@ -88,7 +96,7 @@ import CardActivitiesList from '@/Components/Cards/CardActivitiesList.vue';
 import CardBanner from '@/Components/Cards/CardBanner.vue';
 import CardEmployeesList from '@/Components/Cards/CardEmployeesList.vue';
 import CardShortcut from '@/Components/Cards/CardShortcut.vue';
-import CardTaskList from '@/Components/Cards/CardTaskList.vue';
+
 import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
 import { Head, usePage } from '@inertiajs/vue3';

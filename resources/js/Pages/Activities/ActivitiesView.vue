@@ -84,10 +84,10 @@
                 <tbody>
                   <tr v-for="activity in activities" :key="activity">
                     <td>
-                      <IconPill size="18" v-if="activity.service.name === 'Giving Medicine'"/>
-                      <IconPhysotherapist size="18" v-if="activity.service.name === 'Physiotherapy'"/>
-                      <IconSunHigh size="18" v-if="activity.service.name === 'Leisure'"/>
-                      <IconApple size="18" v-if="activity.service.name === 'Lunch'"/>
+                      <img src="@/Assets/Img/buelino_activities_lunch.png" width="20px"  v-if="activity.service.name === 'Lunch'">
+                      <img src="@/Assets/Img/buelino_activities_medice.png" width="20px"  v-if="activity.service.name === 'Giving Medicine'">
+                      <img src="@/Assets/Img/buelino_activities_physiotherapy.png" width="20px"  v-if="activity.service.name === 'Physiotherapy'">
+                      <img src="@/Assets/Img/buelino_activities_Leisure.png" width="20px"  v-if="activity.service.name === 'Leisure'">
                       {{activity.service.name}}
                     </td>
                     <td><a href="#" class="text-reset" tabindex="-1">{{ activity.employee.user.name }}</a></td>
@@ -136,7 +136,7 @@
 import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
 import { Head } from '@inertiajs/vue3';
-import { IconApple, IconEdit, IconPhysotherapist, IconPill, IconSunHigh, IconTrash } from '@tabler/icons-vue';
+import { IconEdit, IconTrash } from '@tabler/icons-vue';
 const props = defineProps({activities: null})
 
 

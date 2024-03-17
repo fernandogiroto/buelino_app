@@ -46,7 +46,7 @@
                       <tr v-for="patient in patients.data" :key="patient">
                         <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
                         <td><span class="text-secondary">{{ patient.id }}</span></td>
-                        <td><img class="avatar avatar-sm" src="@/Assets/Img/perfil.png"></td>
+                        <td><img class="avatar avatar-sm"  :style="{ 'background-image': 'url(https://i.pravatar.cc/150?img=' + patient.id + ')' }"></td>
                         <td>{{ patient.name }} {{ patient.surname }}</td>
                         <td>{{ patient.phone }}</td>
                         <td>{{ patient.email }}</td>

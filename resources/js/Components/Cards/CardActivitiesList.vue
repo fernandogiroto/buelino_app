@@ -9,13 +9,14 @@
                 <div>
                     <div class="row">
                         <div class="col-auto">
-                            <span class="avatar" v-if="activity.service.name === 'Giving Medicine'"><IconPill size="18"/></span>
-                            <span class="avatar" v-if="activity.service.name === 'Physiotherapy'"><IconPhysotherapist size="18"/></span>
-                            <span class="avatar" v-if="activity.service.name === 'Leisure'"> <IconSunHigh size="18" /></span>
-                            <span class="avatar" v-if="activity.service.name === 'Lunch'"> <IconApple size="18" /></span>
+                            <span class="avatar" v-if="activity.service.name === 'Giving Medicine'"><img src="@/Assets/Img/buelino_activities_medice.png" width="20px"></span>
+                            <span class="avatar" v-if="activity.service.name === 'Physiotherapy'"><img src="@/Assets/Img/buelino_activities_physiotherapy.png" width="20px"></span>
+                            <span class="avatar" v-if="activity.service.name === 'Leisure'"><img src="@/Assets/Img/buelino_activities_Leisure.png" width="20px"></span>
+                            <span class="avatar" v-if="activity.service.name === 'Lunch'"><img  src="@/Assets/Img/buelino_activities_lunch.png" width="20px"></span>
                         </div>
                         <div class="col">
                             <div class="text-truncate">
+                                
                                 <span v-if="activity.service.name === 'Giving Medicine'"><strong>{{activity.employee.user.name}}</strong> deu remédio ao paciente <strong><Link :href="`/patient/${activity.patient.id}`">{{ activity.patient.name }} {{ activity.patient.surname }}</Link></strong></span>
                                 <span v-if="activity.service.name === 'Physiotherapy'"><strong>{{activity.employee.user.name}}</strong> realizou um sessão de fisioterapia com o paciente <strong><Link :href="`/patient/${activity.patient.id}`">{{ activity.patient.name }} {{ activity.patient.surname }}</Link></strong></span>
                                 <span v-if="activity.service.name === 'Leisure'"><strong>{{activity.employee.user.name}}</strong> criou jogos com o paciente <strong><Link :href="`/patient/${activity.patient.id}`">{{ activity.patient.name }} {{ activity.patient.surname }}</Link></strong></span>
@@ -34,7 +35,6 @@
 <script setup>
 const props = defineProps({activities: null})
 import { Link } from '@inertiajs/vue3';
-import { IconApple, IconPhysotherapist, IconPill, IconSunHigh } from '@tabler/icons-vue';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
 
