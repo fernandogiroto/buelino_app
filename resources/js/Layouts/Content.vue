@@ -2,9 +2,10 @@
 <template>
     <div class="page">
         <Header />
-    
         <div class="page-wrapper">
-            <slot name="section" />
+            <template class="d-none d-md-block">
+                <slot name="section" />
+            </template>
             <div class="page-body">
                 <div class="container-xl">
                     <slot />

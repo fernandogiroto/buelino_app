@@ -91,7 +91,7 @@
                       {{activity.service.name}}
                     </td>
                     <td><a href="#" class="text-reset" tabindex="-1">{{ activity.employee.user.name }}</a></td>
-                    <td><a href="#" class="d-flex align-items-center text-reset" tabindex="-1"><img class="avatar avatar-sm me-2" src="@/Assets/Img/perfil.png"><span>{{ activity.patient.name }} {{ activity.patient.surname }}</span></a></td>
+                    <td><a href="#" class="d-flex align-items-center text-reset" tabindex="-1"><img class="avatar avatar-sm me-2" :style="{ 'background-image': 'url(https://i.pravatar.cc/150?img=' + activity.employee.user.id + ')' }"><span>{{ activity.patient.name }} {{ activity.patient.surname }}</span></a></td>
                     <td>{{formatDate(activity.created_at)}}</td>
                     <td>{{formatTime(activity.created_at)}}</td>
                     <td class="text-end">

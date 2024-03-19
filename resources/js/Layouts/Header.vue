@@ -7,15 +7,14 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-            <Link :href="route('dashboard')">
-              <img src="@/Assets/Img/logo.png" width="110" height="32" alt="Buelino" class="navbar-brand-image">
-            </Link>
-           
+          <Link :href="route('dashboard')">
+            <img src="@/Assets/Img/logo.png" width="110" height="32" alt="Buelino" class="navbar-brand-image ms-3 ms-md-0">
+          </Link>
           <div class="navbar-nav flex-row order-md-last">
-            <div class="nav-item d-none d-md-flex me-3">
+            <div class="nav-item d-md-flex me-3">
               <div class="btn-list">
-                <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasTask" role="button" aria-controls="offcanvasTask">
-                  <IconListCheck size="16" /> <span class="ms-1">Notas</span>
+                <a class="btn p-2" data-bs-toggle="offcanvas" href="#offcanvasTask" role="button" aria-controls="offcanvasTask">
+                  <IconListCheck size="16" /> <span class="ms-1 d-none d-md-block">Notas</span>
                   </a>
               </div>
             </div>
@@ -27,7 +26,7 @@
                 <img class="avatar avatar-sm" src="@/Assets/Img/perfil.png">
                 <div class="d-none d-xl-block ps-2">
                   <div>{{user.name}}</div>
-                  <div class="mt-1 small text-secondary">Diretor</div>
+                  <div class="mt-1 small text-secondary">{{user.role}}</div>
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -160,7 +159,7 @@
     </div>
   </template>
   
-  <script setup>
+<script setup>
   import Notifications from '@/Components/Common/Notications.vue';
 import OffcanvasTasks from '@/Components/Offcanvas/OffcanvasTasks.vue';
 import { Link, usePage } from '@inertiajs/vue3';

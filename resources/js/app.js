@@ -13,8 +13,6 @@ import filters from './Plugins/filters.js';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Buelino';
 
-
-
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
@@ -22,9 +20,6 @@ createInertiaApp({
         const app = createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue);
-
-        // app.config.globalProperties.$filters = filters;
-
         Object.keys(filters).forEach(key => {
             app.config.globalProperties[key] = filters[key];
         });
@@ -33,6 +28,6 @@ createInertiaApp({
         return app;
     },
     progress: {
-        color: '#4B5563',
+        color: '#216AC4',
     },
 });

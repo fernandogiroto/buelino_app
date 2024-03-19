@@ -2,7 +2,7 @@
     <Head title="Dashboard"/>
     <Content>
          <!-- SECTION INTRO -->
-        <template #section class="">
+        <template #section>
             <Section title="Dashboard" subtitle="Lar Estância">
                 <template #buttons>
                     <a href="#" class="btn btn-primary d-none d-sm-inline-block">
@@ -14,7 +14,7 @@
         </template>
         <div class="row row-cards">
              <!-- BANNER -->
-            <div class="col-md-6 d-none d-lg-block">
+            <div class="col-md-6 d-none d-md-block">
                 <CardBanner>
                     <template #title>
                         Olá {{ user.name }}
@@ -27,19 +27,18 @@
                     </template>
                 </CardBanner>
             </div>
-            <div class="col-3 d-none d-lg-block">
-
+            <div class="col-3 d-none d-md-block">
             </div>
             <!-- EMPLOYEES LIST -->
-            <div class="col-12 col-md-4 mb-2 mb-md-0 d-none d-lg-block">
+            <div class="col-12 col-md-3 mb-2 mb-md-0 d-none d-md-block">
                 <CardEmployeesList></CardEmployeesList>
             </div>
             <!-- SHORTCUT CARDS -->
-            <div class="col-sm-6 col-lg-3">
-                <CardShortcut url="dashboard" title="Registrar Atividade" subtitle="Passagem de turno">
+            <div class="col-sm-6 col-lg-3 d-block d-md-none">
+                <CardShortcut url="dashboard" title="Registrar Atividade" subtitle="Registrar uma atividade">
                     <div class="col-auto">
-                            <span class="bg-primary text-white avatar">
-                                <IconReport />
+                            <span class="bg-danger text-white avatar">
+                                <IconCheckbox />
                             </span>
                         </div>
                 </CardShortcut>
@@ -100,7 +99,7 @@ import CardShortcut from '@/Components/Cards/CardShortcut.vue';
 import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
 import { Head, usePage } from '@inertiajs/vue3';
-import { IconPlus, IconReport, IconToolsKitchen2, IconUsers, IconWashDryDip } from '@tabler/icons-vue';
+import { IconCheckbox, IconPlus, IconReport, IconToolsKitchen2, IconUsers, IconWashDryDip } from '@tabler/icons-vue';
 
 import { computed } from 'vue';
 const page = usePage();
