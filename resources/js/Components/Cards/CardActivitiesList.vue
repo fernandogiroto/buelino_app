@@ -18,14 +18,11 @@
                             <span class="avatar" v-if="activity.service.name === 'Lunch'"><img  src="@/Assets/Img/buelino_activities_lunch.png" width="20px"></span>
                         </div>
                         <div class="col">
-                            <div class="text-truncate">  
-                                
                                 <span v-if="activity.service.name === 'Bathing'"><strong>{{activity.employee.user.name}}</strong> deu banho ao paciente <strong><Link :href="`/patient/${activity.patient.id}`">{{ activity.patient.name }} {{ activity.patient.surname }}</Link></strong></span>
                                 <span v-if="activity.service.name === 'Giving Medicine'"><strong>{{activity.employee.user.name}}</strong> deu remédio ao paciente <strong><Link :href="`/patient/${activity.patient.id}`">{{ activity.patient.name }} {{ activity.patient.surname }}</Link></strong></span>
                                 <span v-if="activity.service.name === 'Physiotherapy'"><strong>{{activity.employee.user.name}}</strong> realizou um sessão de fisioterapia com o paciente <strong><Link :href="`/patient/${activity.patient.id}`">{{ activity.patient.name }} {{ activity.patient.surname }}</Link></strong></span>
                                 <span v-if="activity.service.name === 'Leisure'"><strong>{{activity.employee.user.name}}</strong> criou jogos com o paciente <strong><Link :href="`/patient/${activity.patient.id}`">{{ activity.patient.name }} {{ activity.patient.surname }}</Link></strong></span>
                                 <span v-if="activity.service.name === 'Lunch'"><strong>{{activity.employee.user.name}}</strong> deu almoço ao paciente <strong><Link :href="`/patient/${activity.patient.id}`">{{ activity.patient.name }} {{ activity.patient.surname }}</Link></strong></span>
-                            </div>
                             <div class="text-secondary">{{formatDate(activity.created_at,'/',includeYear=false)}} - {{formatTime(activity.created_at)}}</div>
                         </div>
                     </div>
@@ -52,6 +49,7 @@
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <div class="col-auto">
+                            <span class="avatar" v-if="activity.service.name === 'Bathing'"><img src="@/Assets/Img/buelino_activities_bath.png" width="20px"></span>
                             <span class="avatar" v-if="activity.service.name === 'Giving Medicine'"><img src="@/Assets/Img/buelino_activities_medice.png" width="20px"></span>
                             <span class="avatar" v-if="activity.service.name === 'Physiotherapy'"><img src="@/Assets/Img/buelino_activities_physiotherapy.png" width="20px"></span>
                             <span class="avatar" v-if="activity.service.name === 'Leisure'"><img src="@/Assets/Img/buelino_activities_Leisure.png" width="20px"></span>
@@ -60,6 +58,7 @@
                     </div>
                     <div class="col">
                         <div class="font-weight-medium">
+                            <span v-if="activity.service.name === 'Bathing'"><strong>{{activity.employee.user.name}}</strong> deu banho ao paciente <strong><Link :href="`/patient/${activity.patient.id}`">{{ activity.patient.name }} {{ activity.patient.surname }}</Link></strong></span>
                             <span v-if="activity.service.name === 'Giving Medicine'"><strong>{{activity.employee.user.name}}</strong> deu remédio ao paciente <strong><Link :href="`/patient/${activity.patient.id}`">{{ activity.patient.name }} {{ activity.patient.surname }}</Link></strong></span>
                             <span v-if="activity.service.name === 'Physiotherapy'"><strong>{{activity.employee.user.name}}</strong> realizou um sessão de fisioterapia com o paciente <strong><Link :href="`/patient/${activity.patient.id}`">{{ activity.patient.name }} {{ activity.patient.surname }}</Link></strong></span>
                             <span v-if="activity.service.name === 'Leisure'"><strong>{{activity.employee.user.name}}</strong> criou jogos com o paciente <strong><Link :href="`/patient/${activity.patient.id}`">{{ activity.patient.name }} {{ activity.patient.surname }}</Link></strong></span>

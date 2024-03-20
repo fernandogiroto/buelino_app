@@ -83,8 +83,9 @@
             <div class="col-12 col-md-6 mt-3 mb-md-0">
                 <CardActivitiesList></CardActivitiesList>
             </div>
-            <!-- TASK LIST -->
-            <div class="col-6">
+            <!-- INVENTORY LIST -->
+            <div class="col-12 col-lg-3">
+                <CardInventory height="18rem"></CardInventory>
             </div>
         </div>
     </Content>
@@ -94,12 +95,14 @@
 import CardActivitiesList from '@/Components/Cards/CardActivitiesList.vue';
 import CardBanner from '@/Components/Cards/CardBanner.vue';
 import CardEmployeesList from '@/Components/Cards/CardEmployeesList.vue';
+import CardInventory from '@/Components/Cards/CardInventory.vue';
 import CardShortcut from '@/Components/Cards/CardShortcut.vue';
 
 import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
 import { Head, usePage } from '@inertiajs/vue3';
 import { IconCheckbox, IconPlus, IconReport, IconToolsKitchen2, IconUsers, IconWashDryDip } from '@tabler/icons-vue';
+
 
 import { computed } from 'vue';
 const page = usePage();

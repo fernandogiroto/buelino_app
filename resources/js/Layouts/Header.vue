@@ -50,12 +50,18 @@
                 <div class="col">
                   <ul class="navbar-nav">
                     <!-- HOME -->
-                    <li class="nav-item" >
+                    <li class="nav-item d-none d-md-block">
                       <Link :href="route('dashboard')" class="nav-link" :class="{ 'active': $page.url === '/dashboard' }">
                         <span class="nav-link-icon d-md-none d-lg-inline-block"><IconHome /></span>
                         <span class="nav-link-title">Início</span>
                       </Link>
-                    </li>      
+                    </li>
+                    <li class="nav-item" >
+                      <Link :href="route('dashboard')" class="nav-link">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block"><IconHome /></span>
+                        <span class="nav-link-title">Início</span>
+                      </Link>
+                    </li>       
                     <!-- PATIENTS -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#navbar-patients" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">

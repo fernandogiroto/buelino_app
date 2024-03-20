@@ -47,7 +47,7 @@
                         <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
                         <td><span class="text-secondary">{{ patient.id }}</span></td>
                         <td><img class="avatar avatar-sm"  :style="{ 'background-image': 'url(https://i.pravatar.cc/150?img=' + patient.id + ')' }"></td>
-                        <td>{{ patient.name }} {{ patient.surname }}</td>
+                        <td><Link :href="`/patient/${patient.id}`" class="text-dark">{{ patient.name }} {{ patient.surname }}</Link></td>
                         <td>{{ patient.phone }}</td>
                         <td>{{ patient.email }}</td>
                         <td>{{ calculateAge(patient.birthday) }} anos</td>
@@ -91,7 +91,7 @@
 <script setup>
 import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import { IconChevronLeft, IconChevronRight, IconChevronUp, IconEdit, IconSearch, IconTrash } from '@tabler/icons-vue';
 
 const props = defineProps({patients: null})

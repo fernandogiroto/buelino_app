@@ -2,7 +2,7 @@
   <Head title="Login" />
   <div class="page page-center page-login-background">
     <div class="container container-tight py-4">
-      <div class="card card-md">
+      <div class="card card-md m-3">
         <div class="card-body">
           <a href="." class="navbar-brand navbar-brand-autodark mb-4 w-100 justify-content-center">
             <img src="@/Assets/Img/logo_transparent.png" width="110" height="32" alt="Buelino" class="navbar-brand-image">

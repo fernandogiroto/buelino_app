@@ -9,7 +9,7 @@
                     <div class="row g-3 align-items-center">
                         <a href="#" class="col-auto">
                             <span class="avatar" :style="`background-image: url('https://i.pravatar.cc/150?img=${employee.id}')`">
-                                <span class="badge" :class="employee.user.status"></span>
+                                <span class="badge bg-green" :class="employee.user.status"></span>
                             </span>
                         </a>
                         <div class="col text-truncate">

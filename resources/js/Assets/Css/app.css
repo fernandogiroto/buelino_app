@@ -3480,7 +3480,7 @@ fieldset:disabled .btn {
     height: 0.36em;
     border-bottom: 1px solid;
     border-left: 1px solid;
-    margin-right: .1em;
+    margin-right: 1.0em;
     margin-left: 0.4em;
     transform: rotate(-45deg);
 }
@@ -14679,6 +14679,21 @@ Navbar
         border-bottom-width: 2px;
     }
 
+
+    @media only screen and (max-width: 700px) {
+
+        .navbar-expand-md.navbar-light .nav-item.active:after,
+        .navbar-expand-md .navbar-light .nav-item.active:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -.25rem;
+            border: 0 solid var(--tblr-navbar-active-border-color);
+            border-bottom-width: 0px !important;
+        }
+    }
+
     .navbar-expand-md.navbar-light.navbar-vertical,
     .navbar-expand-md .navbar-light.navbar-vertical {
         box-shadow: inset calc(-1 * var(--tblr-border-width)) 0 0 0 var(--tblr-navbar-border-color);
@@ -24114,6 +24129,10 @@ Chart sparkline
 .bg-tabler-lt {
     color: var(--tblr-tabler) !important;
     background: rgba(var(--tblr-tabler-rgb), 0.1) !important;
+}
+
+.text-justify {
+    text-align: justify;
 }
 
 .text-primary {
