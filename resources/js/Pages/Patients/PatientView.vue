@@ -64,7 +64,7 @@
         </div>
         <!-- INVENTORY LIST MOBILE -->
         <div class="col-12 d-block d-lg-none">
-          <CardInventory height="15rem"></CardInventory>
+          <CardInventory height="15.5rem"></CardInventory>
         </div>
         <!-- ACTIVITIES -->
         <div class="col-12 col-lg-6">

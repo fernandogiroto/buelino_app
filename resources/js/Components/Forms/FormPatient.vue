@@ -1,19 +1,19 @@
 <template>
     <form @submit.prevent="submit">
         <div class="row">
-            <div class="col-8">
+            <div class="col-12 col-md-8">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <input type="text" class="form-control" name="patient-name" placeholder="Nome" v-model="form.name">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <input type="text" class="form-control" name="patient-surname" placeholder="Sobrenome" v-model="form.surname">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <select class="form-select" v-model="form.gender">
                                 <option value="Masculino">Masculino</option>
@@ -21,22 +21,22 @@
                               </select>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <input type="text" class="form-control" name="patient-responsible" placeholder="Responsável" v-model="form.responsible">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <input type="text" class="form-control" name="patient-email" placeholder="Email" v-model="form.email">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <input type="text" class="form-control" name="patient-phone" placeholder="Telefone" v-model="form.phone">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <label class="form-label">Data de Nascimento</label>
                             <VueDatePicker 
@@ -50,20 +50,20 @@
                             </VueDatePicker>
                         </div>
                     </div>  
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <label class="form-label">Data de Entrada</label>
                             <VueDatePicker>
                             </VueDatePicker>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <div class="form-label">Perfíl</div>
                             <input type="file" class="form-control">
                           </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                         <div class="mb-3">
                             <div class="form-label">Observações</div>
                             <textarea class="form-control" name="example-textarea-input" rows="6" placeholder="" v-model="form.description"></textarea>
@@ -71,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <div class="card">
                   <div class="empty">
                     <div class="empty-img">

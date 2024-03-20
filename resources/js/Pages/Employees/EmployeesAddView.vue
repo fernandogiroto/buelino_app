@@ -5,6 +5,11 @@
             <Section title="Adicionar Funcionário" subtitle="Lar Estância">
             </Section>
         </template>
+        <template class="d-block d-md-none">
+            <div class="mb-3">
+            <Section title="Adicionar Funcionário" subtitle="Lar Estância" />
+            </div>
+        </template>
         <FormEmployee />
     </Content>
 </template>

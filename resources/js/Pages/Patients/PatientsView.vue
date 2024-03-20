@@ -5,7 +5,9 @@
         <Section title="Lista de Pacientes" subtitle="Lar Estância">
         </Section>
       </template>
-      <div class="row row-deck row-cards">
+      <!-- PATIENTS DESKTOP -->
+      <template class="d-none d-md-block">
+        <div class="row row-deck row-cards">
           <div class="col-12">
               <div class="card">
                 <div class="card-header justify-content-between">
@@ -84,7 +86,43 @@
                 </div>
               </div>
           </div>
-      </div>
+        </div>  
+      </template>
+      <!-- PATIENTS MOBILE -->
+      <template class="d-block d-md-none">
+        <div class="mb-3">
+          <Section title="Lista de Pacientes" subtitle="Lar Estância" />
+        </div>
+        <form action="./" method="get" autocomplete="off" novalidate="" class="my-3 d-block d-md-none">
+            <div class="input-icon">
+                <span class="input-icon-addon">
+                    <IconSearch size="18" />
+                </span>
+                <input type="text" class="form-control py-3" placeholder="Pesquisar Paciente" aria-label="Pesquisar Paciente">
+            </div>
+        </form>
+        <div v-for="patient in patients.data" :key="patient">
+          <Link class="card card-sm mb-2" :href="`/patient/${patient.id}`">
+            <div class="card-body">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                    <div class="col-auto">
+                    <img class="avatar" :style="{ 'background-image': 'url(https://i.pravatar.cc/150?img=' + patient.id + ')' }">
+                    </div>
+                </div>
+                <div class="col">
+                  <div class="font-weight-medium">
+                      <span><strong>{{ patient.name }} {{ patient.surname }}</strong></span>
+                  </div>
+                  <div class="text-secondary">
+                      <div class="text-secondary">{{ calculateAge(patient.birthday) }} anos</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </template>
     </Content>
 </template>
 
