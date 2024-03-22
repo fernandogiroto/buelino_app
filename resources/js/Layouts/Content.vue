@@ -9,6 +9,9 @@
             <div class="page-body">
                 <div class="container-xl">
                     <slot />
+                    <template class="d-block d-md-none">
+                        <Footer />
+                    </template>
                 </div>
             </div>
         </div>
@@ -17,5 +20,6 @@
 </template>
 
 <script setup>
-    import Header from '@/Layouts/Header.vue';
+import Footer from '@/Layouts/Footer.vue';
+import Header from '@/Layouts/Header.vue';
 </script>

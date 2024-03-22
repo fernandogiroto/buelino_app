@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
     // PASS TO API
     Route::get('/active_employees/{perPage}', [EmployeeController::class, 'employees']);
     Route::get('/tasks', [TaskController::class, 'tasks']);
+    Route::get('/activities/add', [ActivityController::class, 'addActivitiesView'])->name('activities.add');
     Route::get('/activities/list', [ActivityController::class, 'activities']);
     Route::get('patient/{id}', [PatientController::class, 'patient'])->name('patients.patient');
     Route::post('patient', [PatientController::class, 'store'])->name('patients.create');

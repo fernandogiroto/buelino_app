@@ -14,6 +14,11 @@ class ActivityController extends Controller
         return Inertia::render('Activities/ActivitiesView');
     }
 
+    public function addActivitiesView()
+    {
+        return Inertia::render('Activities/ActivitiesAddView');
+    }
+
     public function activities()
     {
         $clinicId = Auth::user()->employee->clinic_id;

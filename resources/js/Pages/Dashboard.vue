@@ -35,7 +35,7 @@
             </div>
             <!-- SHORTCUT CARDS -->
             <div class="col-sm-6 col-lg-3 d-block d-md-none">
-                <CardShortcut url="dashboard" title="Registrar Atividade" subtitle="Registrar uma atividade">
+                <CardShortcut url="activities.index" title="Registrar Atividade" subtitle="Registrar uma atividade">
                     <div class="col-auto">
                             <span class="bg-danger text-white avatar">
                                 <IconCheckbox />
