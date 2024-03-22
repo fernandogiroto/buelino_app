@@ -46,9 +46,9 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
           <div class="navbar">
             <div class="container-xl">
-              <div class="row flex-fill align-items-center">
+              <div class="row flex-fill align-items-center me-0">
                 <div class="col">
-                  <ul class="navbar-nav">
+                  <ul class="navbar-nav ms-2">
                     <!-- HOME -->
                     <li class="nav-item d-none d-md-block">
                       <Link :href="route('dashboard')" class="nav-link" :class="{ 'active': $page.url === '/dashboard' }">
