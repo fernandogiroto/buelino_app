@@ -34,15 +34,6 @@
                 <CardEmployeesList></CardEmployeesList>
             </div>
             <!-- SHORTCUT CARDS -->
-            <div class="col-sm-6 col-lg-3 d-block d-md-none">
-                <CardShortcut url="activities.add" title="Registrar Atividade" subtitle="Registrar uma atividade">
-                    <div class="col-auto">
-                            <span class="bg-danger text-white avatar">
-                                <IconCheckbox />
-                            </span>
-                        </div>
-                </CardShortcut>
-            </div>
             <div class="col-sm-6 col-lg-3">
                 <CardShortcut url="dashboard" title="Relatório Diário" subtitle="Passagem de turno">
                     <div class="col-auto">
@@ -71,7 +62,7 @@
                 </CardShortcut>
             </div>
             <div class="col-sm-6 col-lg-3">
-                <CardShortcut url="dashboard" title="Gestão de Estoque" subtitle="Lista por paciente">
+                <CardShortcut url="dashboard" title="Gestão de Estoque" subtitle="Estoque do Lar">
                     <div class="col-auto">
                         <span class="bg-facebook text-white avatar">
                             <IconWashDryDip />
@@ -84,7 +75,7 @@
                 <CardActivitiesList></CardActivitiesList>
             </div>
             <!-- INVENTORY LIST -->
-            <div class="col-12 col-lg-3">
+            <div class="col-12 col-lg-3 d-none d-md-block">
                 <CardInventory height="18rem"></CardInventory>
             </div>
         </div>
@@ -101,7 +92,7 @@ import CardShortcut from '@/Components/Cards/CardShortcut.vue';
 import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
 import { Head, usePage } from '@inertiajs/vue3';
-import { IconCheckbox, IconPlus, IconReport, IconToolsKitchen2, IconUsers, IconWashDryDip } from '@tabler/icons-vue';
+import { IconPlus, IconReport, IconToolsKitchen2, IconUsers, IconWashDryDip } from '@tabler/icons-vue';
 
 
 import { computed } from 'vue';

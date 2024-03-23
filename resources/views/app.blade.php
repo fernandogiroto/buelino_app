@@ -10,32 +10,8 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
-    {{-- Adicione a seção de fallback do service worker --}}
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(function(registration) {
-                        console.log('ServiceWorker registrado com sucesso:', registration.scope);
-                    }, function(err) {
-                        console.log('Erro ao registrar o ServiceWorker:', err);
-                    });
-            });
-
-            // Adicionar o listener para fallback offline
-            window.addEventListener('fetch', function(event) {
-                event.respondWith(
-                    caches.match(event.request)
-                        .then(function(response) {
-                            return response || fetch(event.request);
-                        })
-                        .catch(function() {
-                            return caches.match('index.html');
-                        })
-                );
-            });
-        }
-    </script>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
 
     @routes
     @vite('resources/js/app.js')

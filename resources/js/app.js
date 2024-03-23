@@ -10,6 +10,18 @@ import 'vue3-toastify/dist/index.css';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import filters from './Plugins/filters.js';
 
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+                console.log('Service Worker registrado com sucesso:', registration);
+            })
+            .catch(error => {
+                console.error('Falha ao registrar o Service Worker:', error);
+            });
+    });
+}
+
 
 const appName = import.meta.env.VITE_APP_NAME || 'Buelino';
 
