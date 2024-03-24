@@ -1,4 +1,4 @@
-<template>
+  <template>
     <Head title="Pacientes"/>
     <Content>
       <template #section>
@@ -14,15 +14,20 @@
                   <h3 class="card-title">Pacientes</h3>
                   <div class="col-2 d-none d-xxl-block">
                       <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
-                          <form action="./" method="get" autocomplete="off" novalidate="">
-                              <div class="input-icon">
-                                  <span class="input-icon-addon">
-                                      <IconSearch size="18" />
-                                  </span>
-                                  <input type="text" class="form-control" placeholder="Pesquisar Paciente" aria-label="Pesquisar Paciente">
-                              </div>
-                          </form>
-                      </div>
+                        <div class="input-icon">
+                            <span class="input-icon-addon">
+                                <IconSearch size="18" />
+                            </span>
+                            <vue3-simple-typeahead
+                                id="typeahead_id"
+                                placeholder="Pesquisar Paciente"
+                                :items="patientNames"
+                                :minInputLength="1"
+                                @onInput="onInputEventHandler"
+                                @selectItem="selectItemEventHandler"
+                            />
+                        </div>
+                    </div>
                   </div>
                 </div>
                 <div class="table-responsive">
@@ -45,7 +50,8 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="patient in patients.data" :key="patient">
+                      <template v-if="patientsFilter.length > 0">
+                      <tr v-for="patient in patientsFilter" :key="patient">
                         <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
                         <td><span class="text-secondary">{{ patient.id }}</span></td>
                         <td><img class="avatar avatar-sm"  :style="{ 'background-image': 'url(https://i.pravatar.cc/150?img=' + patient.id + ')' }"></td>
@@ -61,28 +67,14 @@
                             <IconEdit />
                         </td>
                       </tr>
+                    </template>
+                    <template v-else>
+                      <tr>
+                        <td colspan="11">Nenhum paciente encontrado.</td>
+                      </tr>
+                    </template>
                     </tbody>
                   </table>
-                </div>
-                <div class="card-footer d-flex align-items-center">
-                  <p class="m-0 text-secondary">Mostrando <span>1</span> a <span>8</span> de <span>16</span> pacientes</p>
-                  <ul class="pagination m-0 ms-auto">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                          <IconChevronLeft  size="15"/> Anterior
-                      </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">
-                          <IconChevronRight  size="15"/> Próximo
-                      </a>
-                    </li>
-                  </ul>
                 </div>
               </div>
           </div>
@@ -93,46 +85,100 @@
         <div class="mb-3">
           <Section title="Lista de Pacientes" subtitle="Lar Estância" />
         </div>
-        <form action="./" method="get" autocomplete="off" novalidate="" class="my-3 d-block d-md-none">
-            <div class="input-icon">
-                <span class="input-icon-addon">
-                    <IconSearch size="18" />
-                </span>
-                <input type="text" class="form-control py-3" placeholder="Pesquisar Paciente" aria-label="Pesquisar Paciente">
-            </div>
-        </form>
-        <div v-for="patient in patients.data" :key="patient">
-          <Link class="card card-sm mb-2" :href="`/patient/${patient.id}`">
-            <div class="card-body">
-              <div class="row align-items-center">
-                <div class="col-auto">
-                    <div class="col-auto">
-                    <img class="avatar" :style="{ 'background-image': 'url(https://i.pravatar.cc/150?img=' + patient.id + ')' }">
-                    </div>
-                </div>
-                <div class="col">
-                  <div class="font-weight-medium">
-                      <span><strong>{{ patient.name }} {{ patient.surname }}</strong></span>
+        <div class="input-icon mb-3">
+            <span class="input-icon-addon">
+              <IconSearch size="18" />
+            </span>
+            <vue3-simple-typeahead
+                id="typeahead_id"
+                placeholder="Pesquisar Paciente"
+                :items="patientNames"
+                :minInputLength="1"
+                @onInput="onInputEventHandler"
+                @selectItem="selectItemEventHandler"
+            />
+        </div>
+        <template v-if="patientsFilter.length > 0">
+          <div v-for="patient in patientsFilter" :key="patient">
+            <Link class="card card-sm mb-2" :href="`/patient/${patient.id}`">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                      <div class="col-auto">
+                      <img class="avatar" :style="{ 'background-image': 'url(https://i.pravatar.cc/150?img=' + patient.id + ')' }">
+                      </div>
                   </div>
-                  <div class="text-secondary">
-                      <div class="text-secondary">{{ calculateAge(patient.birthday) }} anos</div>
+                  <div class="col">
+                    <div class="font-weight-medium">
+                        <span><strong>{{ patient.name }} {{ patient.surname }}</strong></span>
+                    </div>
+                    <div class="text-secondary">
+                        <div class="text-secondary">{{ calculateAge(patient.birthday) }} anos</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </template>
+        <template v-else>
+          <div class="card card-sm mb-2">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                      <div class="col-auto">
+                      </div>
+                  </div>
+                  <div class="col">
+                    <div class="font-weight-medium">
+                        <span><strong>Nenhum Paciente encontrado</strong></span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </Link>
-        </div>
+        </template>
       </template>
     </Content>
-</template>
+  </template>
 
-<script setup>
-import Section from '@/Components/Common/Section.vue';
+  <script setup>
+  import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
 import { Head, Link } from '@inertiajs/vue3';
-import { IconChevronLeft, IconChevronRight, IconChevronUp, IconEdit, IconSearch, IconTrash } from '@tabler/icons-vue';
+import { IconChevronUp, IconEdit, IconSearch, IconTrash } from '@tabler/icons-vue';
+import { computed, defineProps, ref } from 'vue';
+import Vue3SimpleTypeahead from 'vue3-simple-typeahead';
+import 'vue3-simple-typeahead/dist/vue3-simple-typeahead.css';
 
-const props = defineProps({patients: null})
+  const props = defineProps({patients: null});
+  let patientsFilter = ref(props.patients.data);
+  const patientNames = computed(() => {
+    return props.patients.data.map(patient => `${patient.name} ${patient.surname}`);
+  });
 
 
-</script>
+  function onInputEventHandler(value) {
+  const searchTerm = value.input.toLowerCase();
+  if (!searchTerm) {
+    patientsFilter.value = props.patients.data;
+  } else {
+    patientsFilter.value = props.patients.data.filter(patient =>
+      `${patient.name.toLowerCase()} ${patient.surname.toLowerCase()}`.includes(searchTerm)
+    );
+  }
+}
+
+function selectItemEventHandler(value) {
+  const searchTerm = value.toLowerCase();
+  if (!searchTerm) {
+    patientsFilter.value = props.patients.data;
+  } else {
+    patientsFilter.value = props.patients.data.filter(patient =>
+      `${patient.name.toLowerCase()} ${patient.surname.toLowerCase()}`.includes(searchTerm)
+    );
+  }
+}
+
+
+  </script>

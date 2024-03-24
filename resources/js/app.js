@@ -8,6 +8,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
 import 'vue3-toastify/dist/index.css';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
+
 import filters from './Plugins/filters.js';
 
 if ('serviceWorker' in navigator) {

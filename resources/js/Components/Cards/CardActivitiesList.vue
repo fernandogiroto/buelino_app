@@ -44,7 +44,7 @@
         <div class="mb-3">
             <Section title="Últimas Atividades" subtitle="Lista de Atividades" />
         </div>
-        <div class="card card-sm mb-2" v-for="(activity,index) in activities" :key="activity">
+        <div class="card card-sm mb-2" v-for="(activity,index) in activities" :key="activity" v-if="listCharge">
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto">
@@ -71,6 +71,9 @@
                 </div>
             </div>
         </div>
+        <div class="card card-sm mb-2" v-for="n in 5" v-else>
+                <AnimatedPlaceholder height="80px" width="100%"/>
+            </div>
     </template>
 </template>
 
