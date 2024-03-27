@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Activity;
+use App\Models\Employee;
 
 class ActivityController extends Controller
 {
@@ -16,7 +17,12 @@ class ActivityController extends Controller
 
     public function addActivitiesView()
     {
-        return Inertia::render('Activities/ActivitiesAddView');
+        $userId = Auth::id();
+        $clinic = Employee::where('user_id', $userId)->firstOrFail()->clinic;
+        $patients = $clinic->patients()->paginate();
+        return Inertia::render('Activities/ActivitiesAddView', [
+            'patients' => $patients
+        ]);
     }
 
     public function activities()

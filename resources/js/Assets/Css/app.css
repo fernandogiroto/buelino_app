@@ -24614,3 +24614,10 @@ Antialiasing
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     padding-left: 2.5rem;
 }
+
+@media only screen and (max-width: 800px) {
+    .simple-typeahead>input {
+        padding: 0.9375rem 0.75rem;
+        padding-left: 2.5rem;
+    }
+}
