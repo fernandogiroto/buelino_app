@@ -10,43 +10,8 @@
       <!-- ACTIVITIES MOBILE -->
       <template class="d-block d-md-none">
         <template v-if="!showActivities">
-          <div class="card flex-row gap-2 p-2 mb-3 bg-transparent border-0 shadow-none">
-            <div class="card-activity-background"> 
-              <img src="@/Assets/Img/buelino_activities_bath.png" width="30px"> 
-            </div>
-            <div class="d-flex flex-column justify-content-center">
-              <span class="lh-1">Atividade</span>
-              <span class="strong">Dar Banho</span>
-            </div>
-          </div>
-          <div class="input-icon">
-            <span class="input-icon-addon">
-                <IconSearch size="18" />
-            </span>
-            <vue3-simple-typeahead
-                id="typeahead_id"
-                placeholder="Pesquisar Paciente"
-                :items="patientNames"
-                :minInputLength="1"
-                @onInput="onInputEventHandler"
-                @selectItem="selectItemEventHandler"
-                class="py-2"
-            />
-          </div>
-          <div class="row mt-3">
-            <div class="col-6">
-              <VueDatePicker v-model="form.birthday" :enable-time-picker="false"></VueDatePicker>
-            </div>
-            <div class="col-6">
-              <div class="input-icon mb-3">
-                <span class="input-icon-addon">
-                  <IconClock size="20"></IconClock>
-                </span>
-                <input type="text" value="" class="form-control" placeholder="21:00">
-              </div>
-            </div>
-          </div>
-          <a href="#" class="btn btn-primary w-100 py-2 mt-2">Adicionar Atividade</a>
+          <ActivityBath :patients="patientNames" v-if="activityChose === 'bath'"></ActivityBath>
+          <ActivityLeisure :patients="patientNames" v-if="activityChose === 'leisure'"></ActivityLeisure>
         </template>
         <template v-if="showActivities">
           <div class="mb-3">  
@@ -75,7 +40,7 @@
               </CardIcon>
             </div>
             <div class="col-6">
-              <CardIcon title="Lazer" background="#A2D2FF">
+              <CardIcon title="Lazer" background="#A2D2FF" @click="choseActivity('leisure')">
                 <template #icon>
                   <img src="@/Assets/Img/buelino_activities_Leisure.png" width="45px">
                 </template>
@@ -111,45 +76,45 @@
             </div>
           </div>
         </template>
-
       </template>
     </Content>
 </template>
 
 
 <script setup>
+import ActivityBath from '@/Components/Activities/ActivityBath.vue';
+import ActivityLeisure from '@/Components/Activities/ActivityLeisure.vue';
 import CardIcon from '@/Components/Cards/CardIcon.vue';
 import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
-import { Head, useForm } from '@inertiajs/vue3';
-import { IconClock, IconSearch } from '@tabler/icons-vue';
-import VueDatePicker from '@vuepic/vue-datepicker';
+import { Head } from '@inertiajs/vue3';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { computed, defineProps, ref } from 'vue';
-import Vue3SimpleTypeahead from 'vue3-simple-typeahead';
 import 'vue3-simple-typeahead/dist/vue3-simple-typeahead.css';
 
 const props = defineProps({patients: null});
-const patientNames = computed(() => {
+const patientNames2 = computed(() => {
   return props.patients.data.map(patient => `${patient.name} ${patient.surname}`);
 });
-let showActivities = ref(true)
-const form = useForm({
-  birthday: '2024-03-27',
+
+const patientNames = computed(() => {
+  return props.patients.data.map(patient => {
+    return {
+      name: `${patient.name} ${patient.surname}`,
+      id: patient.id,
+      avatar: `https://i.pravatar.cc/150?img=${patient.id}`
+    };
+  });
 });
+let showActivities = ref(true)
+let activityChose = ref(true)
 
 function choseActivity(activity) {
   showActivities.value = false;
+  activityChose.value = activity;
 }
 
 </script>
 
-<style>
-.card-activity-background {
-    background: #F5CAC2;
-    border-radius: 5px;
-    padding: 5px;
-    border: 1px solid;
-}
-</style>
+
 
