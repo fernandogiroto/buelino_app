@@ -8,16 +8,18 @@
         <span class="strong">Lazer</span>
       </div>
     </div>
-    <!-- {{ patients }}   -->
     <div class="input-icon">
       <span class="input-icon-addon">
-          <IconSearch size="18" />
+          <IconSearch size="18" v-if="!patientAvatar" />
+          <img :src="patientAvatar" width="25px" class="rounded-circle" v-else> 
       </span>
       <vue3-simple-typeahead
           id="typeahead_id"
           placeholder="Pesquisar Paciente"
           :items="patientNames"
           :minInputLength="0"
+          @selectItem="selectPatient"
+          @onInput="onInputPatient"
           class="py-2"
       >
         <template #list-item-text="slot" class="d-flex align-items-center">
@@ -61,11 +63,12 @@
 import { useForm } from '@inertiajs/vue3';
 import { IconClock, IconSearch, IconSunHigh } from '@tabler/icons-vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
-import { computed, defineProps } from 'vue';
+import { computed, defineProps, ref } from 'vue';
 import Vue3SimpleTypeahead from 'vue3-simple-typeahead';
 import 'vue3-simple-typeahead/dist/vue3-simple-typeahead.css';
 
 const props = defineProps({patients: null});
+let patientAvatar = ref(false)
 const patientNames = computed(() => {
   return props.patients.map(patient => `${patient.name}`);
 });
@@ -74,6 +77,14 @@ const getPatientAvatar = (name) => {
   const patient = props.patients.find(patient => patient.name === name);
   return patient ? patient.avatar : '';
 };
+
+function selectPatient(patient) {
+  patientAvatar.value = getPatientAvatar(patient)
+}
+
+function onInputPatient(patient) {
+    patientAvatar.value = false;
+}
 
 const leisureActivities = ['Jogar Jogos','Passear no Jardim', 'Assistir Filme']
 

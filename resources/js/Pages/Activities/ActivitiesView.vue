@@ -174,7 +174,7 @@
 <script setup>
 import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import { IconCalendarCog, IconEdit, IconSettings, IconTrash } from '@tabler/icons-vue';
 const props = defineProps({activities: null})
 
