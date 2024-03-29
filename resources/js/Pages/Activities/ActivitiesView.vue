@@ -1,5 +1,6 @@
 <template>
     <Head title="Atividades"/>
+    <OffcanvasActivities></OffcanvasActivities>
     <Content>
       <template #section>
         <Section title="Lista de Atividades" subtitle="Lar Estância"></Section>
@@ -135,8 +136,10 @@
         <div class="mb-3">
           <Section title="Atividades" subtitle="Lista de Atividades">
             <template #buttons>
-              <span><strong>Hoje </strong> </span><IconCalendarCog />
-              <IconSettings />
+              <span class="pt-1"><strong>{{dateActitivy}} </strong> </span><IconCalendarCog />
+              <a class="text-dark" data-bs-toggle="offcanvas" href="#offcanvasActivityFilter" role="button" aria-controls="offcanvasActivityFilter">
+                  <IconSettings size="25" />
+                </a>
               </template>
           </Section> 
         </div>
@@ -173,13 +176,14 @@
 
 <script setup>
 import Section from '@/Components/Common/Section.vue';
+import OffcanvasActivities from '@/Components/Offcanvas/OffcanvasActivities.vue';
 import Content from '@/Layouts/Content.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import { IconCalendarCog, IconEdit, IconSettings, IconTrash } from '@tabler/icons-vue';
-const props = defineProps({activities: null})
-
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
+const props = defineProps({activities: null})
+let dateActitivy = ref('');
 
 const activities = ref(null)
 const getActivities = () => {
@@ -188,7 +192,17 @@ const getActivities = () => {
     .catch(error => console.log(error))
 }
 
+function activityHourDate() {
+  const now = new Date();
+  const day = now.getDate();
+  const mouth = now.getMonth() + 1;
+  const year = now.getFullYear();
+  const decimalMouth = mouth < 10 ? `0${mouth}` : mouth;
+  dateActitivy.value =`${day}/${decimalMouth}/${year}`;
+}
+
 onMounted(()=> {
   getActivities();
+  activityHourDate();
 })
 </script>

@@ -15,7 +15,7 @@
               <div class="btn-list">
                 <a class="btn p-2" data-bs-toggle="offcanvas" href="#offcanvasTask" role="button" aria-controls="offcanvasTask">
                   <IconListCheck size="16" /> <span class="ms-1 d-none d-md-block">Notas</span>
-                  </a>
+                </a>
               </div>
             </div>
             <div class="d-none d-md-flex">
@@ -164,20 +164,20 @@
 import OffcanvasTasks from '@/Components/Offcanvas/OffcanvasTasks.vue';
 import { Link, usePage } from '@inertiajs/vue3';
 import {
-  IconFileCheck,
-  IconFileDescription,
-  IconFilePlus,
-  IconFileSearch,
-  IconFirstAidKit,
-  IconHeartRateMonitor,
-  IconHome,
-  IconListCheck,
-  IconNurse,
-  IconPill,
-  IconReportAnalytics,
-  IconUserHeart,
-  IconUsers,
-  IconUsersPlus
+IconFileCheck,
+IconFileDescription,
+IconFilePlus,
+IconFileSearch,
+IconFirstAidKit,
+IconHeartRateMonitor,
+IconHome,
+IconListCheck,
+IconNurse,
+IconPill,
+IconReportAnalytics,
+IconUserHeart,
+IconUsers,
+IconUsersPlus
 } from '@tabler/icons-vue';
 import { computed } from 'vue';
   const page = usePage();
