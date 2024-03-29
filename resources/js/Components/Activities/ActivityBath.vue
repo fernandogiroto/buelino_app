@@ -15,12 +15,15 @@
       <vue3-simple-typeahead
           id="typeahead_id"
           placeholder="Pesquisar Paciente"
-          :items="patients"
-          :minInputLength="1"
-          @onInput="onInputEventHandler"
-          @selectItem="selectItemEventHandler"
+          :items="patientNames"
+          :minInputLength="0"
           class="py-2"
-      />
+      >
+        <template #list-item-text="slot" class="d-flex align-items-center">
+          <img :src="getPatientAvatar(slot.item)" width="30px" class="pe-2 rounded-circle" />
+          <span v-html="slot.item" class="pt-5"></span>
+        </template>
+      </vue3-simple-typeahead>
     </div>
     <div class="row mt-3">
       <div class="col-6">
@@ -43,18 +46,27 @@
 import { useForm } from '@inertiajs/vue3';
 import { IconClock, IconSearch } from '@tabler/icons-vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
+import { computed, defineProps } from 'vue';
 import Vue3SimpleTypeahead from 'vue3-simple-typeahead';
 import 'vue3-simple-typeahead/dist/vue3-simple-typeahead.css';
 
 const props = defineProps({patients: null});
+const patientNames = computed(() => {
+  return props.patients.map(patient => `${patient.name}`);
+});
+
+const getPatientAvatar = (name) => {
+  const patient = props.patients.find(patient => patient.name === name);
+  return patient ? patient.avatar : '';
+};
   const form = useForm({
     birthday: '2024-03-27',
   });
 </script>
 
-<style>
+<style scoped>
 .card-activity-background {
-    background: #F5CAC2;
+    background: #F5CAC3;
     border-radius: 5px;
     padding: 5px;
     border: 1px solid;

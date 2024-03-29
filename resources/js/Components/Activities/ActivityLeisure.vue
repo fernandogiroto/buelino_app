@@ -13,7 +13,6 @@
       <span class="input-icon-addon">
           <IconSearch size="18" />
       </span>
-
       <vue3-simple-typeahead
           id="typeahead_id"
           placeholder="Pesquisar Paciente"
@@ -21,7 +20,10 @@
           :minInputLength="0"
           class="py-2"
       >
-      <template #list-item-text="slot"><img :src="getPatientAvatar(slot.item)" width="25px" /><span v-html="slot.item"></span></template>
+        <template #list-item-text="slot" class="d-flex align-items-center">
+          <img :src="getPatientAvatar(slot.item)" width="30px" class="pe-2 rounded-circle" />
+          <span v-html="slot.item" class="pt-5"></span>
+        </template>
       </vue3-simple-typeahead>
     </div>
     <div class="row mt-3">
@@ -30,12 +32,26 @@
       </div>
       <div class="col-6">
         <div class="input-icon mb-3">
-          <span class="input-icon-addon">
-            <IconClock size="20"></IconClock>
+          <span class="input-icon-addon" style="z-index: 0;">
+            <IconClock size="18" ></IconClock>
           </span>
           <input type="text" value="" class="form-control" placeholder="21:00">
         </div>
       </div>
+    </div>
+    <div class="input-icon mb-3" style="z-index: 0;">
+      <span class="input-icon-addon">
+          <IconSunHigh size="18"/>
+      </span>
+      <vue3-simple-typeahead
+          id="typeahead_id"
+          placeholder="Pesquisar Atividade"
+          :items="leisureActivities"
+          :minInputLength="0"
+          class="py-2"
+      >
+       <span v-html="slot.item"></span>
+      </vue3-simple-typeahead>
     </div>
     <textarea rows="3" class="form-control" placeholder="Observação"></textarea>
     <a href="#" class="btn btn-primary w-100 py-2 mt-3">Adicionar Atividade</a>
@@ -43,12 +59,11 @@
 
 <script setup>
 import { useForm } from '@inertiajs/vue3';
-import { IconClock, IconSearch } from '@tabler/icons-vue';
+import { IconClock, IconSearch, IconSunHigh } from '@tabler/icons-vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import { computed, defineProps } from 'vue';
 import Vue3SimpleTypeahead from 'vue3-simple-typeahead';
 import 'vue3-simple-typeahead/dist/vue3-simple-typeahead.css';
-
 
 const props = defineProps({patients: null});
 const patientNames = computed(() => {
@@ -60,12 +75,14 @@ const getPatientAvatar = (name) => {
   return patient ? patient.avatar : '';
 };
 
+const leisureActivities = ['Jogar Jogos','Passear no Jardim', 'Assistir Filme']
+
   const form = useForm({
     birthday: '2024-03-27',
   });
 </script>
 
-<style>
+<style scoped>
 .card-activity-background {
     background: #A2D2FF;
     border-radius: 5px;

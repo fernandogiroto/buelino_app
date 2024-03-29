@@ -93,10 +93,6 @@ import { computed, defineProps, ref } from 'vue';
 import 'vue3-simple-typeahead/dist/vue3-simple-typeahead.css';
 
 const props = defineProps({patients: null});
-const patientNames2 = computed(() => {
-  return props.patients.data.map(patient => `${patient.name} ${patient.surname}`);
-});
-
 const patientNames = computed(() => {
   return props.patients.data.map(patient => {
     return {
@@ -116,5 +112,7 @@ function choseActivity(activity) {
 
 </script>
 
+<style>
+</style>
 
 
