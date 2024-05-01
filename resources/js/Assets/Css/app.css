@@ -4264,7 +4264,7 @@ fieldset:disabled .btn {
 
     .navbar-expand-md .navbar-nav .nav-link {
         padding-right: var(--tblr-navbar-nav-link-padding-x);
-        padding-left: var(--tblr-navbar-nav-link-padding-x);
+        padding-left: 0;
     }
 
     .navbar-expand-md .navbar-nav-scroll {

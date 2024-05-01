@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::get('employees/add', [EmployeeController::class, 'addEmployeeView'])->name('employees.add');
     Route::get('medications', [MedicationController::class, 'index'])->name('medications.index');
     Route::get('activities', [ActivityController::class, 'index'])->name('activities.index');
+    Route::get('finances', [ActivityController::class, 'index'])->name('finances.index');
 });
 
 require __DIR__ . '/auth.php';

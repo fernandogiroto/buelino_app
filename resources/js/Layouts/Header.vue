@@ -1,5 +1,6 @@
 <template>
     <OffcanvasTasks></OffcanvasTasks>
+    <OffcanvasCalendar></OffcanvasCalendar>
     <div :class="{'sticky-top': page.url !='/activities'}">
        <!-- TOPBAR -->
       <header class="navbar navbar-expand-md d-print-none">
@@ -15,6 +16,9 @@
               <div class="btn-list">
                 <a class="btn p-2" data-bs-toggle="offcanvas" href="#offcanvasTask" role="button" aria-controls="offcanvasTask">
                   <IconListCheck size="16" /> <span class="ms-1 d-none d-md-block">Notas</span>
+                </a>
+                <a class="btn btn-primary p-2" data-bs-toggle="offcanvas" href="#offcanvasCalendar" role="button" aria-controls="offcanvasCalendar">
+                  <IconCalendarMonth size="16" /> <span class="ms-1 d-none d-md-block">Agenda</span>
                 </a>
               </div>
             </div>
@@ -48,14 +52,7 @@
             <div class="container-xl">
               <div class="row flex-fill align-items-center me-0">
                 <div class="col">
-                  <ul class="navbar-nav ms-2">
-                    <!-- HOME -->
-                    <li class="nav-item d-none d-md-block">
-                      <Link :href="route('dashboard')" class="nav-link" :class="{ 'active': $page.url === '/dashboard' }">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block"><IconHome /></span>
-                        <span class="nav-link-title">Início</span>
-                      </Link>
-                    </li>       
+                  <ul class="navbar-nav">    
                     <!-- PATIENTS -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#navbar-patients" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
@@ -137,9 +134,15 @@
                         <span class="nav-link-title">Medicamentos</span>
                       </Link>
                     </li>
+                    <li class="nav-item">
+                      <Link :href="route('finances.index')" class="nav-link" :class="{ 'active': $page.url === '/finances' }">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block"><IconPig /></span>
+                        <span class="nav-link-title">Financeiro</span>
+                      </Link>
+                    </li>
                   </ul>
                 </div>
-                <div class="col-2 d-none d-xxl-block">
+                <div class="col-2 d-none d-xxl-block pe-0">
                   <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
                     <form action="./" method="get" autocomplete="off" novalidate="">
                       <div class="input-icon">
@@ -161,18 +164,22 @@
   
 <script setup>
   import Notifications from '@/Components/Common/Notications.vue';
+import OffcanvasCalendar from '@/Components/Offcanvas/OffcanvasCalendar.vue';
 import OffcanvasTasks from '@/Components/Offcanvas/OffcanvasTasks.vue';
+
+
 import { Link, usePage } from '@inertiajs/vue3';
 import {
+IconCalendarMonth,
 IconFileCheck,
 IconFileDescription,
 IconFilePlus,
 IconFileSearch,
 IconFirstAidKit,
 IconHeartRateMonitor,
-IconHome,
 IconListCheck,
 IconNurse,
+IconPig,
 IconPill,
 IconReportAnalytics,
 IconUserHeart,

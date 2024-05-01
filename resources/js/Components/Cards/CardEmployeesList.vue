@@ -1,5 +1,5 @@
 <template>
-    <div class="card" style="height: 16rem;">
+    <div class="card" :style="{ height: height }">
         <div class="card-header">
             <h3 class="card-title">{{ title }}</h3>
         </div>
@@ -38,7 +38,8 @@ const props =  defineProps({
     title: {
         type: String,
         default: 'Funcionários'
-    }
+    },
+    height: null
 });
 
 const listCharge = ref(false);

@@ -6,9 +6,9 @@
         <div class="card-body">
           <a href="." class="navbar-brand navbar-brand-autodark mb-4 w-100 justify-content-center">
             <img src="@/Assets/Img/logo_transparent.png" width="110" height="32" alt="Buelino" class="navbar-brand-image">
-          </a>
-          
-          <form @submit.prevent="submit" autocomplete="off">
+          </a>     
+          <FormLoginMobile class="d-block d-md-none"></FormLoginMobile> 
+          <form @submit.prevent="submit" autocomplete="off"  class="d-none d-md-block">
             <div class="mb-3">
               <label class="form-label">Email</label>
               <input id="email" type="email" class="form-control" v-model="form.email" placeholder="info@email.com" autocomplete="off">
@@ -38,7 +38,7 @@
             <div class="form-footer">
               <button type="submit" class="btn btn-primary w-100">Fazer Login</button>
             </div>
-        </form>
+          </form>
         </div>
       </div>
       <div class="text-center text-white fw-bold position-relative mt-3">
@@ -50,10 +50,8 @@
 </template>
 
 <script setup>
+import FormLoginMobile from '@/Components/Forms/FormLoginMobile.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
-
-
-
 defineProps({
   canResetPassword: Boolean,
   status: String,
@@ -96,4 +94,6 @@ const submit = () => {
   font-weight: 500;
   position: relative;
 }
+
+
 </style>
