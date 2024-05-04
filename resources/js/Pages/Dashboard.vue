@@ -14,7 +14,7 @@
                         Olá {{ user.name }}
                     </template>
                     <template #content>
-                        Faça aqui a gestão de atividades e pessoas do e tenha os documentos e registos sempre actualizados.
+                        <span class="text-justify">Faça aqui a gestão de atividades e tenha os documentos e registos sempre actualizados.</span>
                     </template>
                     <template #action>
                         <a href="#" target="_blank" rel="noopener" class="btn btn-primary mt-2">Relatório Diário</a>
@@ -80,6 +80,15 @@
                                 <IconReport />
                             </span>
                         </div>
+                </CardShortcut>
+            </div>
+            <div class="col-sm-6 col-lg-3 mb-2 d-lg-none">
+                <CardShortcut url="dashboard" title="Registrar Ocorrência" subtitle="Alertas e Emergência">
+                    <div class="col-auto">
+                        <span class="bg-danger text-white avatar">
+                          <IconAlertTriangle />
+                        </span>
+                    </div>
                 </CardShortcut>
             </div>
             <div class="col-sm-6 col-lg-3 mb-2 d-block d-md-none">

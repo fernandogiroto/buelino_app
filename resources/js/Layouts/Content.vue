@@ -10,16 +10,18 @@
                 <div class="container-xl">
                     <slot />
                     <template class="d-block d-md-none">
-                        <Footer />
+                        <FooterMobile />
                     </template>
                 </div>
             </div>
         </div>
+        <Footer />
     </div>
 
 </template>
 
 <script setup>
+import FooterMobile from '@/Layouts/FooterMobile.vue';
 import Footer from '@/Layouts/Footer.vue';
 import Header from '@/Layouts/Header.vue';
 </script>

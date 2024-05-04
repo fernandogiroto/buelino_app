@@ -11,7 +11,7 @@
                 <img src="@/Assets/Img/cash_gain.png" v-if="icon==='money_gain'" width="50px">    
                 <img src="@/Assets/Img/cash_loss.png" v-if="icon==='money_loss'" width="50px">    
                 <img src="@/Assets/Img/avatar_old.png" v-if="icon==='patient'" width="50px">    
-                <img src="@/Assets/Img/nurse.png" v-if="icon==='employee'"width="50px">    
+                <img src="@/Assets/Img/nurse_icon.png" v-if="icon==='employee'"width="50px">    
             </div>
         </div>
     </div>

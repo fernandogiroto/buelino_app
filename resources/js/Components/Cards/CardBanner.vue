@@ -1,6 +1,6 @@
 <template>
     <div class="card h-100">
-        <img src="@/Assets/Img/banner_full_dashboard.png" class="w-100 h-100 img-fluid">
+        <img src="@/Assets/Img/banner_buelino_dashboard.png" class="w-100 h-100 img-fluid">
         <div class="card-img-overlay justify-content-start">
             <div class="row">
                 <div class="col-12 col-lg-7">
