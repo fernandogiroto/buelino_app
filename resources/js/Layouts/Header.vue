@@ -9,7 +9,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <Link :href="route('dashboard')">
-            <img src="@/Assets/Img/logo.png" width="110" height="32" alt="Buelino" class="navbar-brand-image ms-3 ms-md-0">
+            <img src="@/Assets/Img/logo.png" width="110" height="32" alt="Buelino" class="navbar-brand-image ms-2 ms-md-0">
           </Link>
           <div class="navbar-nav flex-row order-md-last">
             <div class="nav-item d-md-flex me-3">

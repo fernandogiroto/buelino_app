@@ -23,96 +23,40 @@
             </div>
              <!-- HOUSE INFORMATIONS -->
             <div class="col-3 mb-2 d-none d-md-block">
-                <div class="card mb-2">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center">
-                      <div class="subheader">Sales</div>
-                    </div>
-                    <div class="h1 mb-3">75%</div>
-                    <div class="d-flex mb-2">
-                      <div>Conversion rate</div>
-                      <div class="ms-auto">
-                        <span class="text-green d-inline-flex align-items-center lh-1">
-                          7% 
-                        </span>
-                      </div>
-                    </div>
-                    <div class="progress progress-sm">
-                      <div class="progress-bar bg-primary" style="width: 75%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="75% Complete">
-                        <span class="visually-hidden">75% Complete</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center">
-                      <div class="subheader">Sales</div>
-                    </div>
-                    <div class="h1 mb-3">75%</div>
-                    <div class="d-flex mb-2">
-                      <div>Conversion rate</div>
-                      <div class="ms-auto">
-                        <span class="text-green d-inline-flex align-items-center lh-1">
-                          7%
-                        </span>
-                      </div>
-                    </div>
-                    <div class="progress progress-sm">
-                      <div class="progress-bar bg-primary" style="width: 75%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="75% Complete">
-                        <span class="visually-hidden">75% Complete</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="d-flex flex-column justify-content-between h-100">
+                <CardInformation 
+                  :icon="'money_gain'"
+                  :title="'Recebimentos do mês'"
+                  :subtitle="'R$ 200,00'"
+                  :title_2="'Recebimentos em atraso'"
+                  :subtitle_2="'R$ 150,00'"/>
+                <CardInformation 
+                  :icon="'money_loss'"
+                  :title="'Pagamentos do mês'"
+                  :subtitle="'R$ 200,00'"
+                  :title_2="'Pagamentos em atraso'"
+                  :subtitle_2="'R$ 150,00'"/>
+              </div>
             </div>
             <div class="col-3 mb-2 d-none d-md-block">
-                <div class="card mb-2">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center">
-                      <div class="subheader">Sales</div>
-                    </div>
-                    <div class="h1 mb-3">75%</div>
-                    <div class="d-flex mb-2">
-                      <div>Conversion rate</div>
-                      <div class="ms-auto">
-                        <span class="text-green d-inline-flex align-items-center lh-1">
-                          7%
-                        </span>
-                      </div>
-                    </div>
-                    <div class="progress progress-sm">
-                      <div class="progress-bar bg-primary" style="width: 75%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="75% Complete">
-                        <span class="visually-hidden">75% Complete</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center">
-                      <div class="subheader">Sales</div>
-                    </div>
-                    <div class="h1 mb-3">75%</div>
-                    <div class="d-flex mb-2">
-                      <div>Conversion rate</div>
-                      <div class="ms-auto">
-                        <span class="text-green d-inline-flex align-items-center lh-1">
-                          7% 
-                        </span>
-                      </div>
-                    </div>
-                    <div class="progress progress-sm">
-                      <div class="progress-bar bg-primary" style="width: 75%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="75% Complete">
-                        <span class="visually-hidden">75% Complete</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="d-flex flex-column justify-content-between h-100">
+                <CardInformation 
+                  :icon="'patient'"                   
+                  :title="'Pacientes Ativos'"
+                  :subtitle="'15 Pacientes'"
+                  :title_2="'Pacientes em baixa'"
+                  :subtitle_2="'05 Pacientes'"/>
+                <CardInformation 
+                  :icon="'employee'"                   
+                  :title="'Funcionários Ativos'"
+                  :subtitle="'10 Enfermeiros'"
+                  :title_2="'Funcionários Ausentes'"
+                  :subtitle_2="'02 Enfermeiros'"/>
+              </div>
             </div>
             <!-- ICONS ACTIONS -->
             <div class="col-1 mb-2 d-none d-md-block">
-                <div class="d-flex flex-column justify-content-between h-100 ">
+                <div class="d-flex flex-column justify-content-between h-100 gap-1">
                     <Link href="/" class="bg-danger text-white avatar w-100 cursor-pointer p-4 card-link-pop">
                         <IconAlertTriangle />
                     </Link>
@@ -194,6 +138,7 @@
 import CardActivitiesList from '@/Components/Cards/CardActivitiesList.vue';
 import CardBanner from '@/Components/Cards/CardBanner.vue';
 import CardEmployeesList from '@/Components/Cards/CardEmployeesList.vue';
+import CardInformation from '@/Components/Cards/CardInformation.vue';
 import CardInventory from '@/Components/Cards/CardInventory.vue';
 import CardShortcut from '@/Components/Cards/CardShortcut.vue';
 

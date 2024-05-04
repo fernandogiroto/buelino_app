@@ -1,35 +1,29 @@
 <template>
-    <form @submit.prevent="submit">  
+    <form @submit.prevent="submit" :class="{ 'error': isError }">  
+        <!-- <p>id: {{ form.id }}</p>
+        <p>pass: {{ form.id }}</p>
+        <p>login: {{ form.password }}</p>
+        <p>login: {{ isError }}</p> -->
         <div class="row row text-center"> 
-            <div class="col-4">
-                <div class="input-number shadow-lg" @click="loginInput(1)">1</div>
-            </div>
-            <div class="col-4">
-                <div class="input-number" @click="loginInput(2)">2</div>
-            </div>
-            <div class="col-4">
-                <div class="input-number" @click="loginInput(3)">3</div>
-            </div>
-            <div class="col-4">
-                <div class="input-number" @click="loginInput(4)">4</div>
-            </div>
-            <div class="col-4">
-                <div class="input-number" @click="loginInput(5)">5</div>
-            </div>
-            <div class="col-4">
-                <div class="input-number" @click="loginInput(6)">6</div>
-            </div>
-            <div class="col-4">
-                <div class="input-number" @click="loginInput(7)">7</div>
-            </div>
-            <div class="col-4">
-                <div class="input-number" @click="loginInput(8)">8</div>
-            </div>
-            <div class="col-4">
-                <div class="input-number" @click="loginInput(9)">9</div>
-            </div>
-            <div class="col-4 offset-4">
-                <div class="input-number" @click="loginInput(0)">0</div>
+            <div class="col-12">
+                <div class="d-flex justify-content-between gap-2">
+                    <div class="input-number shadow-lg" @click="loginInput(1)">1</div>
+                    <div class="input-number shadow-lg" @click="loginInput(2)">2</div>
+                    <div class="input-number shadow-lg" @click="loginInput(3)">3</div>
+                </div>
+                <div class="d-flex justify-content-between gap-2">
+                    <div class="input-number shadow-lg" @click="loginInput(4)">4</div>
+                    <div class="input-number shadow-lg" @click="loginInput(5)">5</div>
+                    <div class="input-number shadow-lg" @click="loginInput(6)">6</div>
+                </div>
+                <div class="d-flex justify-content-between gap-2">
+                    <div class="input-number shadow-lg" @click="loginInput(7)">7</div>
+                    <div class="input-number shadow-lg" @click="loginInput(8)">8</div>
+                    <div class="input-number shadow-lg" @click="loginInput(9)">9</div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="input-number shadow-lg" @click="loginInput(0)">0</div>
+                </div>
             </div>
         </div>
     </form>
@@ -37,8 +31,15 @@
 
 <script setup>
 import { useForm } from '@inertiajs/vue3';
-const click = new Audio('./sounds/click.mp3');
+import { ref } from 'vue';
+
+const click = new Audio('./sounds/click3.mp3');
+const error = new Audio('./sounds/error.mp3');
 const welcome = new Audio('./sounds/welcome.mp3');
+
+
+let isError = ref(false); 
+
 defineProps({
   canResetPassword: Boolean,
   status: String,
@@ -53,10 +54,18 @@ const form = useForm({
 
 const submit = () => {
   form.post(route('mobile'), {
-    onFinish: () => {
-        form.reset('password');
+    onSuccess: (data) => {
+        form.reset();
         welcome.play();
-    }
+    },
+    onError: (errors) => {
+            error.play();
+            form.reset();
+            isError.value = true;
+            setTimeout(() => {
+                isError.value = false;
+            }, 1000);
+        }
   });
 };
 
@@ -77,21 +86,39 @@ function loginInput(number) {
 </script>
 
 <style lang="scss">
-    .input-number{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding:10px;
-        margin-bottom: 10px;
-        background-color: var(--tblr-primary);
-        border: 3px dotted black;
-        
-        color: #FFFFFF;
-        font-weight: 700;
-        font-size: 18px;
-        border-radius: 50%;
-        width: 100%;
-        height: 70px;
+.input-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--tblr-primary);
+    border: 2px solid black;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 75px;
+    height: 70px;
+    transition: background-color 0.3s, transform 0.3s;
+    &:active {
+        transform: translateY(-3px);
+        background-color: var(--tblr-primary-dark);
+        color: #353535; 
     }
+}
+
+.error {    
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
 
 </style>

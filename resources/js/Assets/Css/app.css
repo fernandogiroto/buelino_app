@@ -14599,7 +14599,7 @@ Navbar
     }
 
     .navbar-expand-md .navbar-collapse .navbar-nav {
-        margin-left: 0;
+        margin-left: 10px;
         margin-right: 0;
     }
 
