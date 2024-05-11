@@ -30,7 +30,7 @@
                 <img class="avatar avatar-sm" src="@/Assets/Img/perfil.png">
                 <div class="d-none d-xl-block ps-2">
                   <div>{{user.name}}</div>
-                  <div class="mt-1 small text-secondary">{{user.role}}</div>
+                  <div class="mt-1 small text-secondary">Diretor</div>
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">

@@ -10,8 +10,8 @@
         <div class="col-12 col-lg-3">
           <div class="row row-cards">
             <div class="col-12">
-              <div class="card pb-3 " style="height: 29rem">
-                <div class="img-responsive img-responsive-16x9 card-img-top" :style="{ 'background-image': 'url(https://i.pravatar.cc/150?img=' + patient.id + ')' }"></div>
+              <div class="card pb-3 ">
+                <div class="img-responsive img-responsive-profile card-img-top" :style="{ 'background-image': `url('/images/patients/${patient.id}.jpeg')` }"></div>
                 <div class="card-body">
                   <div class="card-title">Informações</div>
                   <div class="mb-2">

@@ -24594,6 +24594,10 @@ Antialiasing
 
 /** RESET  */
 
+.img-responsive-profile {
+    padding-top: calc(12 / 16* 100%);
+}
+
 .simple-typeahead>input {
     margin-bottom: 0;
     display: block;

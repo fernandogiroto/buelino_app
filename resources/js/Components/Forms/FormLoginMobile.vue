@@ -75,10 +75,10 @@ function loginInput(number) {
     click.play();
     if (form.id.length < 3) {
         form.id += number.toString();
-    } else if (form.password.length < 8) {
+    } else if (form.password.length < 4) {
         form.password += number.toString();
     }
-    if (form.id.length + form.password.length === 11) {
+    if (form.id.length + form.password.length === 7) {
         form.id = form.id.replace(/^0+/, '');
         submit();
     }

@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         $user = User::create([
             'name' => 'Fernando Giroto',
             'email' => 'teste@gmail.com',
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('1234'),
             'phone' => $faker->phoneNumber
         ]);
 
@@ -68,7 +68,7 @@ class DatabaseSeeder extends Seeder
             $newUser = User::create([
                 'name' => $userName,
                 'email' => strtolower(str_replace(' ', '_', $userName)) . '@gmail.com',
-                'password' => Hash::make('12345678'),
+                'password' => Hash::make('1234'),
                 'phone' => $faker->phoneNumber,
             ]);
 

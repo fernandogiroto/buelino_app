@@ -11,7 +11,7 @@
           <div class="col-md-6 col-lg-3" v-for="employee in employees.data" :key="employee">
               <div class="card">
                 <div class="card-body p-4 text-center">
-                  <span class="avatar avatar-xl mb-3 rounded" :style="{ 'background-image': 'url(https://i.pravatar.cc/150?img=' + employee.id + ')' }"></span>
+                  <span class="avatar avatar-xl mb-3 rounded" :style="{ 'background-image': `url('/images/users/${employee.id}.jpeg')` }"></span>
                   <h3 class="m-0 mb-1"><a href="#">{{ employee.user.name }}</a></h3>
                   <div class="mt-1">
                     <span :class="[ 'badge',
@@ -36,7 +36,7 @@
       <!-- PATIENTS MOBILE -->
       <template class="d-block d-md-none">
         <div class="mb-3">
-          <Section title="Lista de Funcionários" subtitle="Lar Estância" />
+          <Section title="Lista de Funcionários 22" subtitle="Lar Estância" />
         </div>
         <div v-for="employee in employees.data" :key="employee">
           <Link class="card card-sm mb-2" :href="`/patient/${employee.id}`">
@@ -44,7 +44,7 @@
               <div class="row align-items-center">
                 <div class="col-auto">
                     <div class="col-auto">
-                    <img class="avatar" :style="{ 'background-image': 'url(https://i.pravatar.cc/150?img=' + employee.id + ')' }">
+                      <img class="avatar" :src="`/images/users/${employee.id}.jpeg`" />
                     </div>
                 </div>
                 <div class="col">
@@ -73,7 +73,7 @@
 <script setup>
 import Section from '@/Components/Common/Section.vue';
 import Content from '@/Layouts/Content.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import { IconSquareRoundedPlus } from '@tabler/icons-vue';
 
 const props = defineProps({employees: null})

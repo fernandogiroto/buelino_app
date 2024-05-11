@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "build": "vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "start": "php artisan serve & npm run dev"
   },
   "dependencies": {
     "@fullcalendar/core": "^6.1.11",

@@ -54,7 +54,7 @@
                       <tr v-for="patient in patientsFilter" :key="patient">
                         <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
                         <td><span class="text-secondary">{{ patient.id }}</span></td>
-                        <td><img class="avatar avatar-sm"  :style="{ 'background-image': 'url(https://i.pravatar.cc/150?img=' + patient.id + ')' }"></td>
+                        <td><img class="avatar avatar-sm" :src="`/images/patients/${patient.id}.jpeg`" /></td>
                         <td><Link :href="`/patient/${patient.id}`" class="text-dark">{{ patient.name }} {{ patient.surname }}</Link></td>
                         <td>{{ patient.phone }}</td>
                         <td>{{ patient.email }}</td>

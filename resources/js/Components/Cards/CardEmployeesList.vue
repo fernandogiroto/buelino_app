@@ -8,7 +8,7 @@
                 <div class="col-12" v-for="employee in employees" :key="employee.id" v-if="listCharge">
                     <div class="row g-3 align-items-center">
                         <a href="#" class="col-auto">
-                            <span class="avatar" :style="`background-image: url('https://i.pravatar.cc/150?img=${employee.id}')`">
+                            <span class="avatar" :style="{ 'background-image': `url('/images/users/${employee.id}.jpeg')` }">
                                 <span class="badge bg-green" :class="employee.user.status"></span>
                             </span>
                         </a>
